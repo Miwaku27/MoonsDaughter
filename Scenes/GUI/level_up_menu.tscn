@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6hql45lefi6q"]
+
+[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/UIBox.tres" id="1_be22p"]
+[ext_resource type="Script" path="res://Scripts/GUI/level_up_menu.gd" id="1_ehowj"]
+[ext_resource type="PackedScene" uid="uid://byvt715tim3fn" path="res://Scenes/GUI/inventory_menu_item.tscn" id="1_kmgmu"]
+[ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="2_jikiu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eadic"]
+font = ExtResource("2_jikiu")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yam1d"]
+color = Color(1, 1, 1, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_lq4od"]
+device = -1
+keycode = 49
+unicode = 38
+
+[sub_resource type="Shortcut" id="Shortcut_okgtn"]
+events = [SubResource("InputEventKey_lq4od")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_5q80i"]
+device = -1
+keycode = 50
+unicode = 233
+
+[sub_resource type="Shortcut" id="Shortcut_i6628"]
+events = [SubResource("InputEventKey_5q80i")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ot56e"]
+device = -1
+keycode = 51
+unicode = 34
+
+[sub_resource type="Shortcut" id="Shortcut_cf0kb"]
+events = [SubResource("InputEventKey_ot56e")]
+
+[node name="LevelUpMenu" type="CanvasLayer"]
+script = ExtResource("1_ehowj")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_be22p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level Up"
+label_settings = SubResource("LabelSettings_eadic")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Congratulations! You level up! Select an attribute to increase."
+label_settings = SubResource("LabelSettings_eadic")
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_yam1d")
+
+[node name="HealthUpgradeButton" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("1_kmgmu")]
+unique_name_in_owner = true
+layout_mode = 2
+shortcut = SubResource("Shortcut_okgtn")
+
+[node name="PowerUpgradeButton" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("1_kmgmu")]
+unique_name_in_owner = true
+layout_mode = 2
+shortcut = SubResource("Shortcut_i6628")
+
+[node name="DefenseUpgradeButton" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource("1_kmgmu")]
+unique_name_in_owner = true
+layout_mode = 2
+shortcut = SubResource("Shortcut_cf0kb")
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HealthUpgradeButton" to="." method="_on_health_upgrade_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/PowerUpgradeButton" to="." method="_on_power_upgrade_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/DefenseUpgradeButton" to="." method="_on_defense_upgrade_button_pressed"]

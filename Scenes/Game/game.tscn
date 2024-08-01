@@ -1,0 +1,220 @@
+[gd_scene load_steps=26 format=3 uid="uid://dad8ybukipwy2"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_7g3nc"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/input_handler.gd" id="2_eosnj"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/main_game_input_handler.gd" id="3_wnpas"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/game_over_input_handler.gd" id="4_w1oh4"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/history_viewer_input_handler.gd" id="5_r1wn3"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/base_input_handler.gd" id="6_jw2ei"]
+[ext_resource type="Script" path="res://Scripts/Map/map.gd" id="7_ud6ja"]
+[ext_resource type="Script" path="res://Scripts/Map/dungeon_generator.gd" id="8_t11fx"]
+[ext_resource type="Script" path="res://Scripts/Map/field_of_view.gd" id="9_eap8u"]
+[ext_resource type="Script" path="res://Scripts/GUI/mouseover_checker.gd" id="10_g6ps4"]
+[ext_resource type="Script" path="res://Scripts/Entity/player.gd" id="12_07bg6"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="13_u46r7"]
+[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/UIBox.tres" id="14_o7kxu"]
+[ext_resource type="Script" path="res://Scripts/GUI/hp_display.gd" id="15_seewt"]
+[ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="16_l123p"]
+[ext_resource type="Script" path="res://Scripts/GUI/xp_display.gd" id="17_wp0uw"]
+[ext_resource type="Script" path="res://Scenes/GUI/character_info_box.gd" id="18_4bspx"]
+[ext_resource type="Script" path="res://Scripts/GUI/dungeon_floor_label.gd" id="19_pxta8"]
+[ext_resource type="Script" path="res://Scripts/GUI/message_log.gd" id="20_qo2ue"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbuvy"]
+bg_color = Color(0.498039, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuih2"]
+bg_color = Color(0, 0.498039, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xshaj"]
+font = ExtResource("16_l123p")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46s16"]
+bg_color = Color(0, 0, 0.498039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_426ln"]
+bg_color = Color(0, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h5aoa"]
+font = ExtResource("16_l123p")
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_7g3nc")
+
+[node name="InputHandler" type="Node" parent="."]
+script = ExtResource("2_eosnj")
+
+[node name="MainGameInputHandler" type="Node" parent="InputHandler"]
+script = ExtResource("3_wnpas")
+
+[node name="GameOverInputHandler" type="Node" parent="InputHandler"]
+script = ExtResource("4_w1oh4")
+
+[node name="HistoryViewerInputHandler" type="Node" parent="InputHandler"]
+script = ExtResource("5_r1wn3")
+messages_panel_path = NodePath("../../InterfaceRoot/VBoxContainer/InfoBar/MessagesPanel")
+message_log_path = NodePath("../../InterfaceRoot/VBoxContainer/InfoBar/MessagesPanel/MessageLog")
+
+[node name="DummyInputHandler" type="Node" parent="InputHandler"]
+script = ExtResource("6_jw2ei")
+
+[node name="InputTimer" type="Timer" parent="InputHandler"]
+wait_time = 0.15
+one_shot = true
+
+[node name="Map" type="Node3D" parent="."]
+script = ExtResource("7_ud6ja")
+
+[node name="DungeonGenerator" type="Node" parent="Map"]
+script = ExtResource("8_t11fx")
+
+[node name="FieldOfView" type="Node" parent="Map"]
+script = ExtResource("9_eap8u")
+
+[node name="Entities" type="Node3D" parent="Map"]
+
+[node name="Tiles" type="Node3D" parent="Map"]
+
+[node name="MouseoverChecker" type="Node3D" parent="Map"]
+script = ExtResource("10_g6ps4")
+
+[node name="Player" type="Sprite3D" parent="."]
+script = ExtResource("12_07bg6")
+
+[node name="Camera" type="Camera3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.25, 0)
+script = ExtResource("13_u46r7")
+_sprite_layers = 1
+
+[node name="InterfaceRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InterfaceRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="InterfaceRoot/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="InterfaceRoot/VBoxContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 536)
+render_target_update_mode = 4
+
+[node name="InfoBar" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatsPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/InfoBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("14_o7kxu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel"]
+layout_mode = 2
+
+[node name="HpDisplay" type="MarginContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("15_seewt")
+
+[node name="HpBar" type="ProgressBar" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/HpDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wbuvy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cuih2")
+step = 1.0
+show_percentage = false
+
+[node name="HpLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/HpDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_xshaj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XpDisplay" type="MarginContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("17_wp0uw")
+
+[node name="XpBar" type="ProgressBar" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/XpDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_46s16")
+theme_override_styles/fill = SubResource("StyleBoxFlat_426ln")
+step = 1.0
+show_percentage = false
+
+[node name="XpLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/XpDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_xshaj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharacterInfoBox" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("18_4bspx")
+
+[node name="LevelLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/CharacterInfoBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_h5aoa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/CharacterInfoBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_h5aoa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenseLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/CharacterInfoBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_h5aoa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DungeonFloorLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_h5aoa")
+script = ExtResource("19_pxta8")
+
+[node name="MessagesPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/InfoBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/panel = ExtResource("14_o7kxu")
+
+[node name="MessageLog" type="ScrollContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/MessagesPanel"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("20_qo2ue")
+
+[node name="MessageList" type="VBoxContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/MessagesPanel/MessageLog"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/HpDisplay" method="initialize"]
+[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/XpDisplay" method="initialize"]
+[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/CharacterInfoBox" method="initialize"]
+[connection signal="timeout" from="InputHandler/InputTimer" to="." method="unlock_action"]

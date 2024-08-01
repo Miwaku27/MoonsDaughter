@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy64oyr6x0tmo"]
+
+[ext_resource type="PackedScene" uid="uid://dtcxpgtt0tbwy" path="res://Scenes/Assets/entity.tscn" id="1_t3c8n"]
+[ext_resource type="Texture2D" uid="uid://c1yu34ij2etor" path="res://Assets/Sprites/Margaret.png" id="2_7xfar"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="2_a8a3m"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Entity" parent="." instance=ExtResource("1_t3c8n")]
+texture = ExtResource("2_7xfar")
+
+[node name="Entity2" parent="." instance=ExtResource("1_t3c8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.379, 0.75, -0.38)
+texture = ExtResource("2_7xfar")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.437)
+script = ExtResource("2_a8a3m")
+_sprite_layers = 1

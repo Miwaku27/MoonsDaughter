@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://cwrnajpx7aocs"]
+
+[ext_resource type="Script" path="res://Scripts/Actors/fighter_component_definition.gd" id="1_plahp"]
+[ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="1_so0lt"]
+[ext_resource type="Texture2D" uid="uid://ou5evqnj501h" path="res://Assets/Sprites/Mene_FullBody_770x_1000.png" id="2_nyrum"]
+[ext_resource type="Script" path="res://Scripts/Map/level_component_definition.gd" id="2_ph8ty"]
+
+[sub_resource type="Resource" id="Resource_e0dcn"]
+script = ExtResource("1_plahp")
+max_hp = 16
+power = 4
+defense = 1
+death_color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[sub_resource type="Resource" id="Resource_n1rvh"]
+script = ExtResource("2_ph8ty")
+level_up_base = 0
+level_up_factor = 150
+xp_given = 100
+
+[resource]
+script = ExtResource("1_so0lt")
+name = "Troll"
+texture = ExtResource("2_nyrum")
+color = Color(0, 0.498039, 0, 1)
+is_blocking_movement = true
+type = 2
+fighter_definition = SubResource("Resource_e0dcn")
+ai_type = 1
+inventory_capacity = 0
+level_info = SubResource("Resource_n1rvh")
+has_equipment = false

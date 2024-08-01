@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://b0qd1x4drvva"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="1_2kxe3"]
+[ext_resource type="Script" path="res://Scripts/Actors/fighter_component_definition.gd" id="1_c8n7o"]
+[ext_resource type="Script" path="res://Scripts/Map/level_component_definition.gd" id="2_wvlb7"]
+[ext_resource type="Texture2D" uid="uid://c1yu34ij2etor" path="res://Assets/Sprites/Margaret.png" id="4_a5q1v"]
+
+[sub_resource type="Resource" id="Resource_qrfm2"]
+script = ExtResource("1_c8n7o")
+max_hp = 10
+power = 3
+defense = 0
+death_color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[sub_resource type="Resource" id="Resource_1mkbt"]
+script = ExtResource("2_wvlb7")
+level_up_base = 0
+level_up_factor = 150
+xp_given = 35
+
+[resource]
+script = ExtResource("1_2kxe3")
+name = "Orc"
+texture = ExtResource("4_a5q1v")
+color = Color(1, 1, 1, 1)
+is_blocking_movement = true
+type = 2
+fighter_definition = SubResource("Resource_qrfm2")
+ai_type = 1
+inventory_capacity = 0
+level_info = SubResource("Resource_1mkbt")
+has_equipment = false

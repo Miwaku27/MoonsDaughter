@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtcxpgtt0tbwy"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/selectable_entity.gd" id="1_8l4pj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_05bh2"]
+size = Vector3(1, 1, 0)
+
+[node name="Entity" type="Sprite3D"]
+pixel_size = 0.0015
+script = ExtResource("1_8l4pj")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_05bh2")
+
+[connection signal="input_event" from="." to="." method="click_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="texture_changed" from="." to="." method="_on_texture_changed"]

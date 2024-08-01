@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cf0ylr73b8ski"
+path="res://.godot/imported/wood-support.obj-e1e869928fb2a54f96012537f791675c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wood-support.obj-e1e869928fb2a54f96012537f791675c.mesh"]
+
+source_file="res://Assets/Tiles/wood-support.obj"
+dest_files=["res://.godot/imported/wood-support.obj-e1e869928fb2a54f96012537f791675c.mesh", "res://.godot/imported/wood-support.obj-e1e869928fb2a54f96012537f791675c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

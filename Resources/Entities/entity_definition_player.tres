@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=6 format=3 uid="uid://do6ti7fu27nfc"]
+
+[ext_resource type="Script" path="res://Scripts/Actors/fighter_component_definition.gd" id="1_7q81c"]
+[ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="1_kk8ai"]
+[ext_resource type="Script" path="res://Scripts/Map/level_component_definition.gd" id="2_2vpbn"]
+
+[sub_resource type="Resource" id="Resource_r81fq"]
+script = ExtResource("1_7q81c")
+max_hp = 30
+power = 5
+defense = 2
+death_color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[sub_resource type="Resource" id="Resource_pfiav"]
+script = ExtResource("2_2vpbn")
+level_up_base = 200
+level_up_factor = 150
+xp_given = 0
+
+[resource]
+script = ExtResource("1_kk8ai")
+name = "Player"
+color = Color(1, 1, 1, 1)
+is_blocking_movement = true
+type = 2
+fighter_definition = SubResource("Resource_r81fq")
+ai_type = 1
+inventory_capacity = 10
+level_info = SubResource("Resource_pfiav")
+has_equipment = true

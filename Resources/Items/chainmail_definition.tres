@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=6 format=3 uid="uid://b4fvyarh3th20"]
+
+[ext_resource type="Script" path="res://Scripts/Items/equippable_component_definition.gd" id="1_y7lhb"]
+[ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="2_dpa53"]
+[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="3_e28q2"]
+
+[sub_resource type="Resource" id="Resource_ohqwa"]
+script = ExtResource("1_y7lhb")
+equipment_type = 1
+power_bonus = 0
+defense_bonus = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4fyr"]
+atlas = ExtResource("3_e28q2")
+region = Rect2(544, 16, 16, 16)
+
+[resource]
+script = ExtResource("2_dpa53")
+name = "Chainmail"
+texture = SubResource("AtlasTexture_g4fyr")
+color = Color(0.498039, 0.498039, 0.498039, 1)
+is_blocking_movement = false
+type = 1
+ai_type = 0
+item_definition = SubResource("Resource_ohqwa")
+inventory_capacity = 0

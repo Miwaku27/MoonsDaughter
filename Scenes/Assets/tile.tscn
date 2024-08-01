@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c818maxo7ewrh"]
+
+[ext_resource type="ArrayMesh" uid="uid://n0i6cs4ytvrb" path="res://Assets/Tiles/banner.obj" id="1_r8cnk"]
+[ext_resource type="Script" path="res://Scripts/Map/tile.gd" id="1_snoem"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jaxn3"]
+size = Vector3(1, 0, 1)
+
+[node name="Tile" type="MeshInstance3D"]
+mesh = ExtResource("1_r8cnk")
+script = ExtResource("1_snoem")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_jaxn3")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

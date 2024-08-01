@@ -1,0 +1,83 @@
+[gd_scene load_steps=21 format=3 uid="uid://ccqr2lkcw81c8"]
+
+[ext_resource type="ArrayMesh" uid="uid://n0i6cs4ytvrb" path="res://Assets/Tiles/banner.obj" id="1_jlxql"]
+[ext_resource type="Material" uid="uid://gag841h4kl21" path="res://Assets/Materials/darkness.tres" id="2_066su"]
+[ext_resource type="ArrayMesh" uid="uid://chcwof0n8cecp" path="res://Assets/Tiles/barrel.obj" id="2_sxgts"]
+[ext_resource type="ArrayMesh" uid="uid://smigmy1xmjd2" path="res://Assets/Tiles/chest.obj" id="3_7e56y"]
+[ext_resource type="ArrayMesh" uid="uid://cfk046qqwtt11" path="res://Assets/Tiles/coin.obj" id="4_bl31h"]
+[ext_resource type="ArrayMesh" uid="uid://b71h6d08dmbbc" path="res://Assets/Tiles/column.obj" id="5_kmyfj"]
+[ext_resource type="ArrayMesh" uid="uid://ceipro5cnejgh" path="res://Assets/Tiles/dirt.obj" id="6_awmoe"]
+[ext_resource type="ArrayMesh" uid="uid://nh02d1nmc1t3" path="res://Assets/Tiles/floor-detail.obj" id="7_jx8hd"]
+[ext_resource type="ArrayMesh" uid="uid://cg50qvts1exuc" path="res://Assets/Tiles/floor.obj" id="8_a4nmv"]
+[ext_resource type="ArrayMesh" uid="uid://t6f67ukthjq2" path="res://Assets/Tiles/gate.obj" id="9_f1job"]
+[ext_resource type="ArrayMesh" uid="uid://dbntnpv4rpfox" path="res://Assets/Tiles/rocks.obj" id="10_q2lll"]
+[ext_resource type="ArrayMesh" uid="uid://bwapyxl02usb5" path="res://Assets/Tiles/stairs-up.obj" id="11_36uyh"]
+[ext_resource type="ArrayMesh" uid="uid://cukqnoumo3ndv" path="res://Assets/Tiles/stones.obj" id="12_p6ud5"]
+[ext_resource type="ArrayMesh" uid="uid://4xc5tillmrgg" path="res://Assets/Tiles/trap.obj" id="13_7q4tq"]
+[ext_resource type="ArrayMesh" uid="uid://dfo0cwe74txix" path="res://Assets/Tiles/wall-half.obj" id="14_mrfq0"]
+[ext_resource type="ArrayMesh" uid="uid://b1ul2pxb31ndf" path="res://Assets/Tiles/wall-narrow.obj" id="15_ui5dx"]
+[ext_resource type="ArrayMesh" uid="uid://csnaq7y6isv0g" path="res://Assets/Tiles/wall-opening.obj" id="16_vf60a"]
+[ext_resource type="ArrayMesh" uid="uid://pwg71p01dmi0" path="res://Assets/Tiles/wall.obj" id="17_17ws8"]
+[ext_resource type="ArrayMesh" uid="uid://g355bmrcgxxo" path="res://Assets/Tiles/wood-structure.obj" id="18_2j6af"]
+[ext_resource type="ArrayMesh" uid="uid://cf0ylr73b8ski" path="res://Assets/Tiles/wood-support.obj" id="19_uvfxx"]
+
+[node name="Tiles" type="Node3D"]
+
+[node name="Banner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24858, 0)
+mesh = ExtResource("1_jlxql")
+surface_material_override/0 = ExtResource("2_066su")
+
+[node name="Barrel" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_sxgts")
+
+[node name="Chest" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_7e56y")
+
+[node name="Coin" type="MeshInstance3D" parent="."]
+mesh = ExtResource("4_bl31h")
+
+[node name="Column" type="MeshInstance3D" parent="."]
+mesh = ExtResource("5_kmyfj")
+
+[node name="Dirt" type="MeshInstance3D" parent="."]
+mesh = ExtResource("6_awmoe")
+
+[node name="Floor-detail" type="MeshInstance3D" parent="."]
+mesh = ExtResource("7_jx8hd")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = ExtResource("8_a4nmv")
+
+[node name="Gate" type="MeshInstance3D" parent="."]
+mesh = ExtResource("9_f1job")
+
+[node name="Rocks" type="MeshInstance3D" parent="."]
+mesh = ExtResource("10_q2lll")
+
+[node name="Stairs" type="MeshInstance3D" parent="."]
+mesh = ExtResource("11_36uyh")
+
+[node name="Stones" type="MeshInstance3D" parent="."]
+mesh = ExtResource("12_p6ud5")
+
+[node name="Trap" type="MeshInstance3D" parent="."]
+mesh = ExtResource("13_7q4tq")
+
+[node name="Wall-half" type="MeshInstance3D" parent="."]
+mesh = ExtResource("14_mrfq0")
+
+[node name="Wall-narrow" type="MeshInstance3D" parent="."]
+mesh = ExtResource("15_ui5dx")
+
+[node name="Wall-opening" type="MeshInstance3D" parent="."]
+mesh = ExtResource("16_vf60a")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+mesh = ExtResource("17_17ws8")
+
+[node name="Wood-structure" type="MeshInstance3D" parent="."]
+mesh = ExtResource("18_2j6af")
+
+[node name="Wood-support" type="MeshInstance3D" parent="."]
+mesh = ExtResource("19_uvfxx")

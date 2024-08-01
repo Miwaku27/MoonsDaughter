@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TileDefinition" load_steps=5 format=3 uid="uid://6ffbsjgshvct"]
+
+[ext_resource type="ArrayMesh" uid="uid://pwg71p01dmi0" path="res://Assets/Tiles/wall.obj" id="1_6psik"]
+[ext_resource type="Material" uid="uid://gag841h4kl21" path="res://Assets/Materials/darkness.tres" id="1_7qn2u"]
+[ext_resource type="Script" path="res://Scripts/Map/tile_definition.gd" id="1_ea2w4"]
+[ext_resource type="Material" uid="uid://mp2h4j8bs8f6" path="res://Assets/Materials/selection.tres" id="4_yqwkg"]
+
+[resource]
+script = ExtResource("1_ea2w4")
+mesh = ExtResource("1_6psik")
+darkness_material = ExtResource("1_7qn2u")
+selection_material = ExtResource("4_yqwkg")
+is_walkable = false
+is_transparent = false
+hitbox_height = 1.0

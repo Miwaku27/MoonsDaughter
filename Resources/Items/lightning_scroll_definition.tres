@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=6 format=3 uid="uid://c2xmk2f657nv6"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="1_6px2m"]
+[ext_resource type="Script" path="res://Scripts/Items/lightning_damage_consumable_component_definition.gd" id="1_rb7pt"]
+[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="2_udmnc"]
+
+[sub_resource type="Resource" id="Resource_myife"]
+script = ExtResource("1_rb7pt")
+damage = 20
+maximum_range = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gvdd"]
+atlas = ExtResource("2_udmnc")
+region = Rect2(704, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_6px2m")
+name = "Lightning Scroll"
+texture = SubResource("AtlasTexture_7gvdd")
+color = Color(1, 1, 0, 1)
+is_blocking_movement = false
+type = 1
+ai_type = 0
+item_definition = SubResource("Resource_myife")
+inventory_capacity = 0
+has_equipment = false

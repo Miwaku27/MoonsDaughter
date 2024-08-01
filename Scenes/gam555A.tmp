@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dad8ybukipwy2"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_pp33l"]
+[ext_resource type="Script" path="res://Scripts/input_handler.gd" id="3_nyivp"]
+[ext_resource type="Script" path="res://Scripts/Map/map.gd" id="4_2f55p"]
+[ext_resource type="Script" path="res://Scripts/Map/dungeon_generator.gd" id="5_3xbwk"]
+[ext_resource type="Script" path="res://Scripts/Map/field_of_view.gd" id="6_0uxik"]
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_pp33l")
+
+[node name="InputHandler" type="Node" parent="."]
+script = ExtResource("3_nyivp")
+
+[node name="Map" type="Node3D" parent="."]
+script = ExtResource("4_2f55p")
+
+[node name="DungeonGenerator" type="Node" parent="Map"]
+script = ExtResource("5_3xbwk")
+
+[node name="FieldOfView" type="Node" parent="Map"]
+script = ExtResource("6_0uxik")
+
+[node name="Entities" type="Node3D" parent="Map"]
+
+[node name="Tiles" type="Node3D" parent="Map"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
