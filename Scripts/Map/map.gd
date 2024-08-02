@@ -11,8 +11,12 @@ var map_data: MapData
 @onready var dungeon_generator: DungeonGenerator = $DungeonGenerator
 @onready var field_of_view: FieldOfView = $FieldOfView
 
+var highlights = []
+
 func _ready() -> void:
 	SignalBus.player_descended.connect(next_floor)
+	SignalBus.target_entered.connect(target_at_position)
+	SignalBus.target_exited.connect(untarget_at_position)
 
 func generate(player: Player, current_floor: int = 1) -> void:
 	map_data = dungeon_generator.generate_dungeon(player, current_floor)
@@ -46,6 +50,47 @@ func next_floor() -> void:
 	player.get_node("Camera3D").make_current()
 	field_of_view.reset_fov()
 	update_fov(player.grid_position)
+
+func distance(first_position: Vector2i, other_position: Vector2i) -> int:
+	var relative: Vector2i = other_position - first_position
+	return maxi(abs(relative.x), abs(relative.y))
+
+func target_at_position(grid_position, radius = 1, selection_color = Color.BLUE):
+	for highlight in highlights:
+		if highlight:
+			highlight.remove_highlight()
+	
+	highlights = []
+	var tile = map_data.get_tile(grid_position)
+	tile.highlight(selection_color)
+	highlights.append(tile)
+	var entity = map_data.get_blocking_entity_at_location(grid_position)
+	if entity:
+		entity.highlight(selection_color)
+		highlights.append(entity)
+	if radius > 1:
+		for map_tile in map_data.get_tiles():
+			if distance(map_tile.grid_position, grid_position) <= radius:
+				map_tile.highlight(selection_color)
+				highlights.append(map_tile)
+		for actor in map_data.get_actors():
+			if actor.distance(grid_position) <= radius:
+				actor.highlight(selection_color)
+				highlights.append(actor)
+
+func untarget_at_position(_grid_position, _radius = 2):
+	pass
+	#map_data.get_tile(grid_position).remove_highlight()
+	#var entity = map_data.get_blocking_entity_at_location(grid_position)
+	#if entity:
+	#	entity.remove_highlight()
+	#if radius > 1:
+	#	for tile in map_data.get_tiles():
+	#		if distance(tile.grid_position, grid_position) <= radius:
+	#			tile.remove_highlight()
+	#	for actor in map_data.get_actors():
+	#		if actor.distance(grid_position) <= radius:
+	#			actor.remove_highlight()
 
 #Save & Load
 func load_game(player: Entity) -> bool:

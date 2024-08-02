@@ -8,6 +8,7 @@ const tile_types = {
 
 var key: String
 var _definition: TileDefinition
+var grid_position: Vector2i
 
 var is_explored: bool = false:
 	set(value):
@@ -25,6 +26,7 @@ var is_in_view: bool = false:
 @warning_ignore("shadowed_variable")
 func initialize(grid_position: Vector2i, key: String) -> void:
 	visible = false
+	self.grid_position = grid_position
 	position = Vector3i(grid_position.x, 0, grid_position.y)
 	set_tile_type(key)
 
@@ -45,8 +47,6 @@ func is_transparent() -> bool:
 signal input_event(camera: Node, event: InputEvent, position: Vector3, normal: Vector3)
 signal mouse_entered()
 signal mouse_exited()
-
-const selection_color : Color = Color.PURPLE
 
 var mouse_over := false
 var image : Image
@@ -83,9 +83,16 @@ func _on_3d_mouse_ray_processed() -> void:
 	_mouse_input_received = false
 
 func _on_mouse_entered():
-	set_surface_override_material(0, _definition.selection_material if is_in_view else _definition.darkness_material)
+	SignalBus.target_entered.emit(self.grid_position)
 
 func _on_mouse_exited():
+	SignalBus.target_exited.emit(self.grid_position)
+
+func highlight(selection_color):
+	_definition.selection_material.albedo_color = selection_color
+	set_surface_override_material(0, _definition.selection_material if is_in_view else _definition.darkness_material)
+
+func remove_highlight():
 	set_surface_override_material(0, null if is_in_view else _definition.darkness_material)
 	
 # Takes the variables of the standard input_event signal

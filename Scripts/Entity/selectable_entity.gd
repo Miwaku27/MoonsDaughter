@@ -4,8 +4,6 @@ signal input_event(camera: Node, event: InputEvent, position: Vector3, normal: V
 signal mouse_entered()
 signal mouse_exited()
 
-const selection_color : Color = Color.PURPLE
-
 var mouse_over := false
 var image : Image
 
@@ -61,9 +59,15 @@ func _on_texture_changed() -> void:
 			collision_shape.shape.size.y = 0
 
 func _on_mouse_entered():
-	modulate = selection_color
+	SignalBus.target_entered.emit(self.grid_position)
 
 func _on_mouse_exited():
+	SignalBus.target_exited.emit(self.grid_position)
+
+func highlight(selection_color):
+	modulate = selection_color
+
+func remove_highlight():
 	modulate = mod_color
 
 # Takes the variables of the standard input_event signal

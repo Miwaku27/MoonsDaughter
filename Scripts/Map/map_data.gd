@@ -29,6 +29,9 @@ func _setup_tiles() -> void:
 			var tile = EntityManager.create_tile(tile_position, "wall")
 			tiles.append(tile)
 
+func get_tiles() -> Array[Tile]:
+	return tiles
+
 func get_tile(grid_position: Vector2i) -> Tile:
 	var tile_index: int = grid_to_index(grid_position)
 	if tile_index == -1:
@@ -51,7 +54,7 @@ func is_in_bounds(coordinate: Vector2i) -> bool:
 		and 0 <= coordinate.y
 		and coordinate.y < height
 	)
-	
+
 func get_blocking_entity_at_location(grid_position: Vector2i) -> Entity:
 	for entity in entities:
 		if entity.is_blocking_movement() and entity.grid_position == grid_position:

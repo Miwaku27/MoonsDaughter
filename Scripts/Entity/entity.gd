@@ -149,6 +149,12 @@ func turn(angle : float, tween_rotation := true):
 	else:
 		rotation = Vector3(0, angle , 0)
 
+func highlight(selection_color):
+	pass
+
+func remove_highlight():
+	pass
+
 #Save & Load
 func get_save_data() -> Dictionary:
 	var save_data: Dictionary = {
