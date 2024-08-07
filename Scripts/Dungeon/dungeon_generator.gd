@@ -1,17 +1,6 @@
 class_name DungeonGenerator
 extends Node
 
-@export_category("Map Dimensions")
-@export var map_width: int = 30
-@export var map_height: int = 45
-
-@export_category("Rooms RNG")
-@export var max_rooms: int = 2
-@export var room_max_size: int = 10
-@export var room_min_size: int = 6
-
-var _rng := RandomNumberGenerator.new()
-
 const entity_types = {
 	"orc": preload("res://Resources/Entities/entity_definition_orc.tres"),
 	"troll": preload("res://Resources/Entities/entity_definition_troll.tres"),
@@ -20,31 +9,12 @@ const entity_types = {
 	"confusion_scroll": preload("res://Resources/Items/confusion_scroll_definition.tres"),
 	"fireball_scroll": preload("res://Resources/Items/fireball_scroll_definition.tres"),
 }
-
-const max_items_by_floor = [
-	[1, 1],
-	[4, 2]
-]
-
-const max_monsters_by_floor = [
-	[1, 2],
-	[4, 3],
-	[6, 5]
-]
-
-const item_chances = {
-	0: {"health_potion": 35},
-	2: {"confusion_scroll": 10},
-	4: {"lightning_scroll": 25, "sword": 5},
-	6: {"fireball_scroll": 25, "chainmail": 15},
+const available_dungeons = {
+	"test": preload("res://Resources/Dungeons/test_dungeon.tres"),
 }
 
-const enemy_chances = {
-	0: {"orc": 80},
-	3: {"troll": 15},
-	5: {"troll": 30},
-	7: {"troll": 60}
-}
+var _rng := RandomNumberGenerator.new()
+var current_dungeon : DungeonDefinition
 
 
 func _ready() -> void:
@@ -62,16 +32,21 @@ func _carve_room(dungeon: MapData, room: Rect2i) -> void:
 			_carve_tile(dungeon, x, y)
 
 func generate_dungeon(player: Entity, current_floor: int) -> MapData:
-	var dungeon := MapData.new(map_width, map_height, player)
+	print("Ding")
+	current_dungeon = available_dungeons["test"]
+	return generate_floor(player, current_floor)
+
+func generate_floor(player: Entity, current_floor: int) -> MapData:
+	var dungeon := MapData.new(current_dungeon.map_width, current_dungeon.map_height, player)
 	dungeon.current_floor = current_floor
 	dungeon.entities.append(player)
 	
 	var rooms: Array[Rect2i] = []
 	var center_last_room: Vector2i
 	
-	for _try_room in max_rooms:
-		var room_width: int = _rng.randi_range(room_min_size, room_max_size)
-		var room_height: int = _rng.randi_range(room_min_size, room_max_size)
+	for _try_room in current_dungeon.max_rooms:
+		var room_width: int = _rng.randi_range(current_dungeon.room_min_size, current_dungeon.room_max_size)
+		var room_height: int = _rng.randi_range(current_dungeon.room_min_size, current_dungeon.room_max_size)
 		
 		var x: int = _rng.randi_range(0, dungeon.width - room_width - 1)
 		var y: int = _rng.randi_range(0, dungeon.height - room_height - 1)
@@ -106,6 +81,7 @@ func generate_dungeon(player: Entity, current_floor: int) -> MapData:
 	dungeon.setup_pathfinding()
 	return dungeon
 
+
 func _tunnel_horizontal(dungeon: MapData, y: int, x_start: int, x_end: int) -> void:
 	var x_min: int = mini(x_start, x_end)
 	var x_max: int = maxi(x_start, x_end)
@@ -127,13 +103,13 @@ func _tunnel_between(dungeon: MapData, start: Vector2i, end: Vector2i) -> void:
 		_tunnel_horizontal(dungeon, end.y, start.x, end.x)
 
 func _place_entities(dungeon: MapData, room: Rect2i, current_floor: int) -> void:
-	var max_monsters_per_room: int = _get_max_value_for_floor(max_monsters_by_floor, current_floor)
-	var max_items_per_room: int = _get_max_value_for_floor(max_items_by_floor, current_floor)
+	var max_monsters_per_room: int = _get_max_value_for_floor(current_dungeon.max_monsters_by_floor, current_floor)
+	var max_items_per_room: int = _get_max_value_for_floor(current_dungeon.max_items_by_floor, current_floor)
 	var number_of_monsters: int = _rng.randi_range(0, max_monsters_per_room)
 	var number_of_items: int = _rng.randi_range(0, max_items_per_room)
 	
-	var monsters: Array[String] = _get_entities_at_random(enemy_chances, number_of_monsters, current_floor)
-	var items: Array[String] = _get_entities_at_random(item_chances, number_of_items, current_floor)
+	var monsters: Array[String] = _get_entities_at_random(current_dungeon.enemy_chances, number_of_monsters, current_floor)
+	var items: Array[String] = _get_entities_at_random(current_dungeon.item_chances, number_of_items, current_floor)
 	
 	var entity_keys: Array[String] = monsters + items
 	

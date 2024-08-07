@@ -20,6 +20,7 @@ xp_given = 35
 
 [resource]
 script = ExtResource("1_2kxe3")
+id = "orc"
 name = "Orc"
 texture = ExtResource("4_a5q1v")
 color = Color(1, 1, 1, 1)

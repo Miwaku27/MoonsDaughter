@@ -9,6 +9,7 @@ script = ExtResource("1_dqtc4")
 equipment_type = 0
 power_bonus = 2
 defense_bonus = 0
+id = ""
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_masqe"]
 atlas = ExtResource("3_3rl5l")
@@ -16,6 +17,7 @@ region = Rect2(512, 96, 16, 16)
 
 [resource]
 script = ExtResource("1_7ci28")
+id = "dagger"
 name = "Dagger"
 texture = SubResource("AtlasTexture_masqe")
 color = Color(0.498039, 0.498039, 0.498039, 1)
@@ -24,3 +26,4 @@ type = 1
 ai_type = 0
 item_definition = SubResource("Resource_o0bpy")
 inventory_capacity = 0
+has_equipment = false

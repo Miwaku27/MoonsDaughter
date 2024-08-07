@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DungeonDefinition" load_steps=2 format=3 uid="uid://vtp4m02jov8r"]
+
+[ext_resource type="Script" path="res://Scripts/Dungeon/dungeon_definition.gd" id="1_qjdaq"]
+
+[resource]
+script = ExtResource("1_qjdaq")
+name = "Unnamed Dungeon"
+map_width = 30
+map_height = 45
+max_rooms = 2
+room_max_size = 10
+room_min_size = 6

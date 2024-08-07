@@ -9,6 +9,7 @@ script = ExtResource("1_uvxjb")
 equipment_type = 1
 power_bonus = 0
 defense_bonus = 1
+id = ""
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62xpe"]
 atlas = ExtResource("3_v686q")
@@ -16,6 +17,7 @@ region = Rect2(512, 16, 16, 16)
 
 [resource]
 script = ExtResource("2_obapt")
+id = "leather_armor"
 name = "Leather Armor"
 texture = SubResource("AtlasTexture_62xpe")
 color = Color(1, 0.498039, 0, 1)
@@ -24,3 +26,4 @@ type = 1
 ai_type = 0
 item_definition = SubResource("Resource_ix08j")
 inventory_capacity = 0
+has_equipment = false

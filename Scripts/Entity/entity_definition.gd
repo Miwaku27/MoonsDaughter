@@ -1,6 +1,7 @@
 class_name EntityDefinition extends Resource
 
 @export_category("Visuals")
+@export var id: String
 @export var name: String = "Unnamed Entity"
 @export var texture: Texture
 @export_color_no_alpha var color: Color = Color.WHITE

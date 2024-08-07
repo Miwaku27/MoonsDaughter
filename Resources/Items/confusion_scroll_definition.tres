@@ -7,6 +7,7 @@
 [sub_resource type="Resource" id="Resource_ansg2"]
 script = ExtResource("1_5pqid")
 number_of_turns = 10
+id = ""
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iiivm"]
 atlas = ExtResource("2_omp6d")
@@ -14,6 +15,7 @@ region = Rect2(576, 176, 16, 16)
 
 [resource]
 script = ExtResource("1_vdpvr")
+id = "confusion_scroll"
 name = "Confusion Scroll"
 texture = SubResource("AtlasTexture_iiivm")
 color = Color(0.811765, 0.247059, 1, 1)

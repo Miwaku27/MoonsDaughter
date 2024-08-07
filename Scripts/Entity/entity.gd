@@ -8,10 +8,12 @@ const entity_types = {
 	"player": "res://Resources/Entities/entity_definition_player.tres",
 	"orc": "res://Resources/Entities/entity_definition_orc.tres",
 	"troll": "res://Resources/Entities/entity_definition_troll.tres",
+	
 	"health_potion": "res://Resources/Items/health_potion_definition.tres",
 	"lightning_scroll": "res://Resources/Items/lightning_scroll_definition.tres",
 	"confusion_scroll": "res://Resources/Items/confusion_scroll_definition.tres",
 	"fireball_scroll": "res://Resources/Items/fireball_scroll_definition.tres",
+	
 	"dagger": "res://Resources/Items/dagger_definition.tres",
 	"sword": "res://Resources/Items/sword_definition.tres",
 	"chainmail": "res://Resources/Items/chainmail_definition.tres",
@@ -72,7 +74,7 @@ func move(move_offset: Vector2i) -> void:
 @warning_ignore("shadowed_variable")
 func set_entity_type(key: String) -> void:
 	self.key = key
-	var entity_definition: EntityDefinition = load(entity_types[key])
+	var entity_definition: EntityDefinition = Database.entities[key]
 	_definition = entity_definition
 	type = _definition.type
 	blocks_movement = _definition.is_blocking_movement
@@ -149,7 +151,7 @@ func turn(angle : float, tween_rotation := true):
 	else:
 		rotation = Vector3(0, angle , 0)
 
-func highlight(selection_color):
+func highlight(_selection_color):
 	pass
 
 func remove_highlight():

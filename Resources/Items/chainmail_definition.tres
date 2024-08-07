@@ -9,6 +9,7 @@ script = ExtResource("1_y7lhb")
 equipment_type = 1
 power_bonus = 0
 defense_bonus = 3
+id = ""
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4fyr"]
 atlas = ExtResource("3_e28q2")
@@ -16,6 +17,7 @@ region = Rect2(544, 16, 16, 16)
 
 [resource]
 script = ExtResource("2_dpa53")
+id = "chainmail"
 name = "Chainmail"
 texture = SubResource("AtlasTexture_g4fyr")
 color = Color(0.498039, 0.498039, 0.498039, 1)
@@ -24,3 +26,4 @@ type = 1
 ai_type = 0
 item_definition = SubResource("Resource_ohqwa")
 inventory_capacity = 0
+has_equipment = false

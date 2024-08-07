@@ -55,7 +55,7 @@ func distance(first_position: Vector2i, other_position: Vector2i) -> int:
 	var relative: Vector2i = other_position - first_position
 	return maxi(abs(relative.x), abs(relative.y))
 
-func target_at_position(grid_position, radius = 1, selection_color = Color.BLUE):
+func target_at_position(grid_position, radius = 1, selection_color = Color.MEDIUM_PURPLE):
 	for highlight in highlights:
 		if highlight:
 			highlight.remove_highlight()

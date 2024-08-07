@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dad8ybukipwy2"]
+[gd_scene load_steps=27 format=3 uid="uid://dad8ybukipwy2"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_7g3nc"]
 [ext_resource type="Script" path="res://Scripts/EventHandlers/input_handler.gd" id="2_eosnj"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/EventHandlers/history_viewer_input_handler.gd" id="5_r1wn3"]
 [ext_resource type="Script" path="res://Scripts/EventHandlers/base_input_handler.gd" id="6_jw2ei"]
 [ext_resource type="Script" path="res://Scripts/Map/map.gd" id="7_ud6ja"]
-[ext_resource type="Script" path="res://Scripts/Map/dungeon_generator.gd" id="8_t11fx"]
+[ext_resource type="Script" path="res://Scripts/Dungeon/dungeon_generator.gd" id="8_t11fx"]
 [ext_resource type="Script" path="res://Scripts/Map/field_of_view.gd" id="9_eap8u"]
 [ext_resource type="Script" path="res://Scripts/GUI/mouseover_checker.gd" id="10_g6ps4"]
 [ext_resource type="Script" path="res://Scripts/Entity/player.gd" id="12_07bg6"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Scenes/GUI/character_info_box.gd" id="18_4bspx"]
 [ext_resource type="Script" path="res://Scripts/GUI/dungeon_floor_label.gd" id="19_pxta8"]
 [ext_resource type="Script" path="res://Scripts/GUI/message_log.gd" id="20_qo2ue"]
+[ext_resource type="Script" path="res://Scripts/database.gd" id="20_qs15x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbuvy"]
 bg_color = Color(0.498039, 0, 0, 1)
@@ -213,6 +214,9 @@ script = ExtResource("20_qo2ue")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("20_qs15x")
 
 [connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/HpDisplay" method="initialize"]
 [connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/XpDisplay" method="initialize"]

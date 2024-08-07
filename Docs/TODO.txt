@@ -1,5 +1,9 @@
 TODO :
+Dungeon:
 	- Different vision range for enemies (for now enemy sees player when player sees them)
-	- Targeting specific enemy (Tuto 9 - 10)
-		=> Bird's eye view? Rely on minimap?
 	- Minimap
+	- Ally UI
+
+Outside:
+	- UI
+	- Dialogue

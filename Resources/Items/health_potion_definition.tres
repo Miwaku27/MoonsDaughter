@@ -7,6 +7,7 @@
 [sub_resource type="Resource" id="Resource_pa4k2"]
 script = ExtResource("1_hq5xf")
 healing_amount = 4
+id = ""
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqwos"]
 atlas = ExtResource("2_bdm0n")
@@ -14,6 +15,7 @@ region = Rect2(656, 176, 16, 16)
 
 [resource]
 script = ExtResource("1_c4dh2")
+id = "health_potion"
 name = "Health Potion"
 texture = SubResource("AtlasTexture_yqwos")
 color = Color(0.498039, 0, 1, 1)

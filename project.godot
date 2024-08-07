@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://Scripts/Utils/signal_bus.gd"
 EntityManager="*res://Scripts/entity_manager.gd"
+Database="*res://Scripts/database.gd"
 
 [editor]
 
