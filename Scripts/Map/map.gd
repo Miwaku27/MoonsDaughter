@@ -11,6 +11,7 @@ var map_data: MapData
 @onready var dungeon_generator: DungeonGenerator = $DungeonGenerator
 @onready var field_of_view: FieldOfView = $FieldOfView
 
+var player : Player
 var highlights = []
 
 func _ready() -> void:
@@ -18,7 +19,8 @@ func _ready() -> void:
 	SignalBus.target_entered.connect(target_at_position)
 	SignalBus.target_exited.connect(untarget_at_position)
 
-func generate(player: Player, current_floor: int = 1) -> void:
+func generate(_player: Player, current_floor: int = 1) -> void:
+	player = _player
 	map_data = dungeon_generator.generate_dungeon(player, current_floor)
 	map_data.entity_placed.connect(entities.add_child)
 	_place_tiles()
@@ -40,14 +42,14 @@ func update_fov(player_position: Vector2i) -> void:
 		entity.visible = map_data.get_tile(entity.grid_position).is_in_view
 
 func next_floor() -> void:
-	var player: Entity = map_data.player
+	#var player: Entity = map_data.player
 	entities.remove_child(player)
 	for entity in entities.get_children():
 		entity.queue_free()
 	for tile in tiles.get_children():
 		tile.queue_free()
 	generate(player, map_data.current_floor + 1)
-	player.get_node("Camera3D").make_current()
+	#player.get_node("Camera3D").make_current()
 	field_of_view.reset_fov()
 	update_fov(player.grid_position)
 
@@ -93,7 +95,8 @@ func untarget_at_position(_grid_position, _radius = 2):
 	#			actor.remove_highlight()
 
 #Save & Load
-func load_game(player: Entity) -> bool:
+func load_game(_player: Entity) -> bool:
+	player = _player
 	map_data = MapData.new(0, 0, player)
 	map_data.entity_placed.connect(entities.add_child)
 	if not map_data.load_game():

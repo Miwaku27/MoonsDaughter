@@ -10,6 +10,8 @@ var key: String
 var _definition: TileDefinition
 var grid_position: Vector2i
 
+@onready var icon = $Icon
+
 var is_explored: bool = false:
 	set(value):
 		is_explored = value
@@ -22,6 +24,7 @@ var is_in_view: bool = false:
 		set_surface_override_material(0, null if is_in_view else _definition.darkness_material)
 		if is_in_view and not is_explored:
 			is_explored = true
+
 
 @warning_ignore("shadowed_variable")
 func initialize(grid_position: Vector2i, key: String) -> void:
@@ -36,6 +39,9 @@ func set_tile_type(key: String) -> void:
 	_definition = tile_types[key]
 	mesh = _definition.mesh
 	#mesh.material.albedo_color = _definition.color_dark
+	if icon:
+		icon.texture = _definition.icon_texture
+		icon.modulate = _definition.icon_color
 
 func is_walkable() -> bool:
 	return _definition.is_walkable
@@ -66,6 +72,10 @@ func _ready():
 
 	if camera.has_signal("mouse_ray_processed"):
 		camera.mouse_ray_processed.connect(_on_3d_mouse_ray_processed)
+	
+	if _definition:
+		icon.texture = _definition.icon_texture
+		icon.modulate = _definition.icon_color
 
 func _on_3d_mouse_ray_processed() -> void:
 	# Received Input

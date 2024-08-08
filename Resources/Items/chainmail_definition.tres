@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="EntityDefinition" load_steps=6 format=3 uid="uid://b4fvyarh3th20"]
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://b4fvyarh3th20"]
 
+[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="1_kqq3n"]
 [ext_resource type="Script" path="res://Scripts/Items/equippable_component_definition.gd" id="1_y7lhb"]
 [ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="2_dpa53"]
 [ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="3_e28q2"]
@@ -21,6 +22,8 @@ id = "chainmail"
 name = "Chainmail"
 texture = SubResource("AtlasTexture_g4fyr")
 color = Color(0.498039, 0.498039, 0.498039, 1)
+icon_texture = ExtResource("1_kqq3n")
+icon_color = Color(0.498039, 0.498039, 0.498039, 1)
 is_blocking_movement = false
 type = 1
 ai_type = 0

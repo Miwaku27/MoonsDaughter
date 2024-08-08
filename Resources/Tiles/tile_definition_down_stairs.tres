@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="TileDefinition" load_steps=5 format=3 uid="uid://wjmfx6f7ddbt"]
+[gd_resource type="Resource" script_class="TileDefinition" load_steps=6 format=3 uid="uid://wjmfx6f7ddbt"]
 
 [ext_resource type="Material" uid="uid://gag841h4kl21" path="res://Assets/Materials/darkness.tres" id="1_3yc5m"]
 [ext_resource type="Script" path="res://Scripts/Map/tile_definition.gd" id="1_xjigq"]
+[ext_resource type="Texture2D" uid="uid://dwsf15q88ej0i" path="res://Assets/MiniMap/stairs.png" id="2_0yix0"]
 [ext_resource type="ArrayMesh" uid="uid://1hr543b1prda" path="res://Assets/Tiles/stairs-down.obj" id="2_q47di"]
 [ext_resource type="Material" uid="uid://mp2h4j8bs8f6" path="res://Assets/Materials/selection.tres" id="4_p2yus"]
 
@@ -10,6 +11,8 @@ script = ExtResource("1_xjigq")
 mesh = ExtResource("2_q47di")
 darkness_material = ExtResource("1_3yc5m")
 selection_material = ExtResource("4_p2yus")
+icon_texture = ExtResource("2_0yix0")
+icon_color = Color(0.470076, 0.470076, 0.470076, 1)
 is_walkable = true
 is_transparent = true
 hitbox_height = 0.0

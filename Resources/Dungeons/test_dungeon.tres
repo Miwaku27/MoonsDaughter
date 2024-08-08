@@ -5,8 +5,40 @@
 [resource]
 script = ExtResource("1_qjdaq")
 name = "Unnamed Dungeon"
-map_width = 30
+map_width = 80
 map_height = 45
-max_rooms = 2
+max_items_by_floor = [[1, 1], [4, 2]]
+max_monsters_by_floor = [[1, 2], [4, 3], [6, 5]]
+max_rooms = 10
 room_max_size = 10
 room_min_size = 6
+enemy_chances = {
+0: {
+"orc": 80
+},
+3: {
+"troll": 15
+},
+5: {
+"troll": 30
+},
+7: {
+"troll": 60
+}
+}
+item_chances = {
+0: {
+"health_potion": 35
+},
+2: {
+"confusion_scroll": 10
+},
+4: {
+"lightning_scroll": 25,
+"sword": 5
+},
+6: {
+"chainmail": 15,
+"fireball_scroll": 25
+}
+}

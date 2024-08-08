@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/Map/field_of_view.gd" id="9_eap8u"]
 [ext_resource type="Script" path="res://Scripts/GUI/mouseover_checker.gd" id="10_g6ps4"]
 [ext_resource type="Script" path="res://Scripts/Entity/player.gd" id="12_07bg6"]
+[ext_resource type="PackedScene" uid="uid://ei3rffm8h1p7" path="res://Scenes/mini_map.tscn" id="13_sluf8"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="13_u46r7"]
 [ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/UIBox.tres" id="14_o7kxu"]
 [ext_resource type="Script" path="res://Scripts/GUI/hp_display.gd" id="15_seewt"]
@@ -19,7 +20,6 @@
 [ext_resource type="Script" path="res://Scenes/GUI/character_info_box.gd" id="18_4bspx"]
 [ext_resource type="Script" path="res://Scripts/GUI/dungeon_floor_label.gd" id="19_pxta8"]
 [ext_resource type="Script" path="res://Scripts/GUI/message_log.gd" id="20_qo2ue"]
-[ext_resource type="Script" path="res://Scripts/database.gd" id="20_qs15x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbuvy"]
 bg_color = Color(0.498039, 0, 0, 1)
@@ -82,13 +82,19 @@ script = ExtResource("9_eap8u")
 script = ExtResource("10_g6ps4")
 
 [node name="Player" type="Sprite3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("12_07bg6")
 
 [node name="Camera" type="Camera3D" parent="Player"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+cull_mask = 1048573
 script = ExtResource("13_u46r7")
 _sprite_layers = 1
+
+[node name="Icon" type="Sprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.1, 0)
+layers = 2
 
 [node name="InterfaceRoot" type="Control" parent="."]
 layout_mode = 3
@@ -97,6 +103,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MiniMap" parent="InterfaceRoot" node_paths=PackedStringArray("player") instance=ExtResource("13_sluf8")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_right = 0.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 1
+player = NodePath("../../Player")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InterfaceRoot"]
 layout_mode = 1
@@ -109,13 +127,13 @@ grow_vertical = 2
 [node name="SubViewportContainer" type="SubViewportContainer" parent="InterfaceRoot/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 5.0
+size_flags_stretch_ratio = 4.0
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="InterfaceRoot/VBoxContainer/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1152, 536)
+size = Vector2i(1152, 515)
 render_target_update_mode = 4
 
 [node name="InfoBar" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer"]
@@ -214,9 +232,6 @@ script = ExtResource("20_qo2ue")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Node" type="Node" parent="."]
-script = ExtResource("20_qs15x")
 
 [connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/HpDisplay" method="initialize"]
 [connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/XpDisplay" method="initialize"]

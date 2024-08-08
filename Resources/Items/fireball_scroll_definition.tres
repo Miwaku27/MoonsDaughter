@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EntityDefinition" load_steps=6 format=3 uid="uid://38oy63eajgxf"]
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://38oy63eajgxf"]
 
 [ext_resource type="Script" path="res://Scripts/Items/fireball_damage_consumable_component_definition.gd" id="1_168y6"]
+[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="1_k6h23"]
 [ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="1_ymwrt"]
 [ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="2_sm2xk"]
 
@@ -20,6 +21,8 @@ id = "fireball_scroll"
 name = "Fireball Scroll"
 texture = SubResource("AtlasTexture_fnte7")
 color = Color(1, 0, 0, 1)
+icon_texture = ExtResource("1_k6h23")
+icon_color = Color(1, 0, 0, 1)
 is_blocking_movement = false
 type = 1
 ai_type = 0

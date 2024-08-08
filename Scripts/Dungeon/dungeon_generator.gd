@@ -32,7 +32,6 @@ func _carve_room(dungeon: MapData, room: Rect2i) -> void:
 			_carve_tile(dungeon, x, y)
 
 func generate_dungeon(player: Entity, current_floor: int) -> MapData:
-	print("Ding")
 	current_dungeon = available_dungeons["test"]
 	return generate_floor(player, current_floor)
 

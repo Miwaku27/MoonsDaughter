@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="EntityDefinition" load_steps=6 format=3 uid="uid://l23s7rxfv18h"]
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://l23s7rxfv18h"]
 
+[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="1_fer4o"]
 [ext_resource type="Script" path="res://Scripts/Items/equippable_component_definition.gd" id="1_uvxjb"]
 [ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="2_obapt"]
 [ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="3_v686q"]
@@ -21,6 +22,8 @@ id = "leather_armor"
 name = "Leather Armor"
 texture = SubResource("AtlasTexture_62xpe")
 color = Color(1, 0.498039, 0, 1)
+icon_texture = ExtResource("1_fer4o")
+icon_color = Color(1, 0.498039, 0, 1)
 is_blocking_movement = false
 type = 1
 ai_type = 0

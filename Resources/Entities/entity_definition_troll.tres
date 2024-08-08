@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://cwrnajpx7aocs"]
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=8 format=3 uid="uid://cwrnajpx7aocs"]
 
 [ext_resource type="Script" path="res://Scripts/Actors/fighter_component_definition.gd" id="1_plahp"]
 [ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="1_so0lt"]
-[ext_resource type="Texture2D" uid="uid://ou5evqnj501h" path="res://Assets/Sprites/Mene_FullBody_770x_1000.png" id="2_nyrum"]
+[ext_resource type="Texture2D" uid="uid://dnmkj8hcx6a2t" path="res://Assets/MiniMap/entity.png" id="2_8bupw"]
 [ext_resource type="Script" path="res://Scripts/Map/level_component_definition.gd" id="2_ph8ty"]
+[ext_resource type="Texture2D" uid="uid://c1yu34ij2etor" path="res://Assets/Sprites/Margaret.png" id="5_i3xqh"]
 
 [sub_resource type="Resource" id="Resource_e0dcn"]
 script = ExtResource("1_plahp")
@@ -22,8 +23,10 @@ xp_given = 100
 script = ExtResource("1_so0lt")
 id = "troll"
 name = "Troll"
-texture = ExtResource("2_nyrum")
-color = Color(0, 0.498039, 0, 1)
+texture = ExtResource("5_i3xqh")
+color = Color(0.482083, 0.200638, 0.854536, 1)
+icon_texture = ExtResource("2_8bupw")
+icon_color = Color(0.482353, 0.2, 0.854902, 1)
 is_blocking_movement = true
 type = 2
 fighter_definition = SubResource("Resource_e0dcn")

@@ -5,6 +5,8 @@ class_name EntityDefinition extends Resource
 @export var name: String = "Unnamed Entity"
 @export var texture: Texture
 @export_color_no_alpha var color: Color = Color.WHITE
+@export var icon_texture: Texture
+@export_color_no_alpha var icon_color: Color = Color.WHITE
 
 @export_category("Mechanics")
 @export var is_blocking_movement: bool = true

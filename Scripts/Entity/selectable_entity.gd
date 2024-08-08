@@ -13,6 +13,7 @@ var _mouse_input_received := false
 
 
 func _ready():
+	super._ready()
 	# Duplicate collision shape so it's unique
 	collision_shape.shape = collision_shape.shape.duplicate()
 

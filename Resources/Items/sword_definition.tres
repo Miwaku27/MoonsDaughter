@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EntityDefinition" load_steps=6 format=3 uid="uid://f15dlcxkwvtx"]
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://f15dlcxkwvtx"]
 
 [ext_resource type="Script" path="res://Scripts/Items/equippable_component_definition.gd" id="1_cr1m1"]
+[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="1_yiuvk"]
 [ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="2_y5eb5"]
 [ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="3_kyndx"]
 
@@ -21,6 +22,8 @@ id = "sword"
 name = "Sword"
 texture = SubResource("AtlasTexture_ssnqe")
 color = Color(0.498039, 0.498039, 0.498039, 1)
+icon_texture = ExtResource("1_yiuvk")
+icon_color = Color(0.498039, 0.498039, 0.498039, 1)
 is_blocking_movement = false
 type = 1
 ai_type = 0

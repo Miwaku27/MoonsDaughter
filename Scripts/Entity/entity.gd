@@ -53,6 +53,12 @@ var grid_position: Vector2i:
 	get:
 		return grid_position
 
+@onready var icon = $Icon
+
+func _ready():
+	if _definition:
+		icon.texture = _definition.icon_texture
+		icon.modulate = _definition.icon_color
 
 @warning_ignore("shadowed_variable")
 func initialize(_map_data: MapData, start_position: Vector2i, key: String = "") -> void:
@@ -82,6 +88,9 @@ func set_entity_type(key: String) -> void:
 	texture = entity_definition.texture
 	mod_color = entity_definition.color
 	modulate = mod_color
+	if icon:
+		icon.texture = entity_definition.icon_texture
+		icon.modulate = entity_definition.icon_color
 	
 	match entity_definition.ai_type:
 		AIType.HOSTILE:

@@ -9,9 +9,11 @@ region = Rect2(384, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_27jfl")
+id = ""
 name = "Unnamed Entity"
 texture = SubResource("AtlasTexture_pfqiv")
 color = Color(1, 1, 1, 1)
+icon_color = Color(1, 1, 1, 1)
 is_blocking_movement = true
 type = 2
 ai_type = 0

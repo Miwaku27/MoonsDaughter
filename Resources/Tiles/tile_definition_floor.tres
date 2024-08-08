@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="TileDefinition" load_steps=5 format=3 uid="uid://bof72x1mp0tln"]
+[gd_resource type="Resource" script_class="TileDefinition" load_steps=6 format=3 uid="uid://bof72x1mp0tln"]
 
 [ext_resource type="Script" path="res://Scripts/Map/tile_definition.gd" id="1_eqpll"]
 [ext_resource type="Material" uid="uid://gag841h4kl21" path="res://Assets/Materials/darkness.tres" id="1_oktf5"]
 [ext_resource type="ArrayMesh" uid="uid://cg50qvts1exuc" path="res://Assets/Tiles/floor.obj" id="1_rk8n1"]
+[ext_resource type="Texture2D" uid="uid://bgp01l4hdo68g" path="res://Assets/MiniMap/tile.png" id="2_y4tyr"]
 [ext_resource type="Material" uid="uid://mp2h4j8bs8f6" path="res://Assets/Materials/selection.tres" id="4_i7xdt"]
 
 [resource]
@@ -10,5 +11,8 @@ script = ExtResource("1_eqpll")
 mesh = ExtResource("1_rk8n1")
 darkness_material = ExtResource("1_oktf5")
 selection_material = ExtResource("4_i7xdt")
+icon_texture = ExtResource("2_y4tyr")
+icon_color = Color(0.791999, 0.791999, 0.791999, 1)
 is_walkable = true
 is_transparent = true
+hitbox_height = 0.0

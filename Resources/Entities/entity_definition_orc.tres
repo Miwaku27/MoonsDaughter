@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://b0qd1x4drvva"]
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=8 format=3 uid="uid://b0qd1x4drvva"]
 
 [ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="1_2kxe3"]
 [ext_resource type="Script" path="res://Scripts/Actors/fighter_component_definition.gd" id="1_c8n7o"]
+[ext_resource type="Texture2D" uid="uid://dnmkj8hcx6a2t" path="res://Assets/MiniMap/entity.png" id="2_rqkb2"]
 [ext_resource type="Script" path="res://Scripts/Map/level_component_definition.gd" id="2_wvlb7"]
 [ext_resource type="Texture2D" uid="uid://c1yu34ij2etor" path="res://Assets/Sprites/Margaret.png" id="4_a5q1v"]
 
@@ -24,6 +25,8 @@ id = "orc"
 name = "Orc"
 texture = ExtResource("4_a5q1v")
 color = Color(1, 1, 1, 1)
+icon_texture = ExtResource("2_rqkb2")
+icon_color = Color(0.820365, 0.41073, 0.397437, 1)
 is_blocking_movement = true
 type = 2
 fighter_definition = SubResource("Resource_qrfm2")

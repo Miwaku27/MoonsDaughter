@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EntityDefinition" load_steps=6 format=3 uid="uid://xby7wyx1v40f"]
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://xby7wyx1v40f"]
 
 [ext_resource type="Script" path="res://Scripts/Items/confusion_consumable_component_definition.gd" id="1_5pqid"]
+[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="1_26e7p"]
 [ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="1_vdpvr"]
 [ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="2_omp6d"]
 
@@ -19,6 +20,8 @@ id = "confusion_scroll"
 name = "Confusion Scroll"
 texture = SubResource("AtlasTexture_iiivm")
 color = Color(0.811765, 0.247059, 1, 1)
+icon_texture = ExtResource("1_26e7p")
+icon_color = Color(0.811765, 0.247059, 1, 1)
 is_blocking_movement = false
 type = 1
 ai_type = 0

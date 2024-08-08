@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EntityDefinition" load_steps=6 format=3 uid="uid://c2xmk2f657nv6"]
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://c2xmk2f657nv6"]
 
 [ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="1_6px2m"]
+[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="1_8wqaw"]
 [ext_resource type="Script" path="res://Scripts/Items/lightning_damage_consumable_component_definition.gd" id="1_rb7pt"]
 [ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="2_udmnc"]
 
@@ -20,6 +21,8 @@ id = "lightning_scroll"
 name = "Lightning Scroll"
 texture = SubResource("AtlasTexture_7gvdd")
 color = Color(1, 1, 0, 1)
+icon_texture = ExtResource("1_8wqaw")
+icon_color = Color(1, 1, 0, 1)
 is_blocking_movement = false
 type = 1
 ai_type = 0

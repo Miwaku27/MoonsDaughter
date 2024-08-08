@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="EntityDefinition" load_steps=6 format=3 uid="uid://do6ti7fu27nfc"]
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://do6ti7fu27nfc"]
 
 [ext_resource type="Script" path="res://Scripts/Actors/fighter_component_definition.gd" id="1_7q81c"]
 [ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="1_kk8ai"]
 [ext_resource type="Script" path="res://Scripts/Map/level_component_definition.gd" id="2_2vpbn"]
+[ext_resource type="Texture2D" uid="uid://dnmkj8hcx6a2t" path="res://Assets/MiniMap/entity.png" id="2_rsmvo"]
 
 [sub_resource type="Resource" id="Resource_r81fq"]
 script = ExtResource("1_7q81c")
@@ -22,6 +23,8 @@ script = ExtResource("1_kk8ai")
 id = "player"
 name = "Player"
 color = Color(1, 1, 1, 1)
+icon_texture = ExtResource("2_rsmvo")
+icon_color = Color(1, 1, 1, 1)
 is_blocking_movement = true
 type = 2
 fighter_definition = SubResource("Resource_r81fq")
