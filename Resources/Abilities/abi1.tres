@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" load_steps=2 format=3 uid="uid://dokmf6n8wqqxe"]
+
+[ext_resource type="Script" path="res://Scripts/Abilities/ability_definition.gd" id="1_h3wvq"]
+
+[resource]
+script = ExtResource("1_h3wvq")
+id = "faraway"
+name = "Far Away"
+damage = 0
+max_range = 3
+zone = 1

@@ -21,4 +21,5 @@ func perform() -> bool:
 	else:
 		attack_description += " but does no damage."
 		MessageLog.send_message(attack_description, attack_color)
+	SignalBus.target_entity.emit(target)
 	return true

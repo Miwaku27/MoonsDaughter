@@ -14,6 +14,8 @@ const directions = [
 
 const inventory_menu_scene = preload("res://Scenes/GUI/inventory_menu.tscn")
 
+@export var ability_input_manager: BaseInputHandler
+
 func get_action(player : Entity) -> Action:
 	var action: Action = null
 	
@@ -57,11 +59,15 @@ func get_action(player : Entity) -> Action:
 	
 	if Input.is_action_just_pressed("view_history"):
 		get_parent().transition_to(InputHandler.InputHandlers.HISTORY_VIEWER)
-		
+	
+	
 	if Input.is_action_just_pressed("quit") or Input.is_action_just_pressed("cancel"):
 		action = EscapeAction.new(player)
 	
-	return action
+	if action:
+		return action
+	else:
+		return ability_input_manager.get_action(player)
 
 func get_item(window_title: String, inventory: InventoryComponent) -> Entity:
 	if inventory.items.is_empty():

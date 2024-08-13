@@ -1,8 +1,13 @@
 TODO :
 Dungeon:
+	- Targeting System
+	- Shortcuts
+	- Character Stats & Combat
+	- Allies
+		- UI
+		- AI
+	
 	- Different vision range for enemies (for now enemy sees player when player sees them)
-	- Minimap
-	- Ally UI
 
 Outside:
 	- UI

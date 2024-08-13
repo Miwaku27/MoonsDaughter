@@ -113,7 +113,7 @@ func try_mouse_input(camera: Node, event: InputEvent, input_position: Vector3, n
 
 func click_event(_camera: Node, event: InputEvent, _input_position: Vector3, _normal: Vector3) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
-		SignalBus.target_clicked.emit(self, event.button_index)
+		SignalBus.target_clicked.emit(grid_position, event.button_index)
 
 #Save & Load
 func get_save_data() -> Dictionary:

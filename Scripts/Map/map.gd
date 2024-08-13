@@ -16,8 +16,8 @@ var highlights = []
 
 func _ready() -> void:
 	SignalBus.player_descended.connect(next_floor)
-	SignalBus.target_entered.connect(target_at_position)
-	SignalBus.target_exited.connect(untarget_at_position)
+	#SignalBus.target_entered.connect(target_at_position)
+	#SignalBus.target_exited.connect(untarget_at_position)
 
 func generate(_player: Player, current_floor: int = 1) -> void:
 	player = _player
@@ -93,6 +93,12 @@ func untarget_at_position(_grid_position, _radius = 2):
 	#	for actor in map_data.get_actors():
 	#		if actor.distance(grid_position) <= radius:
 	#			actor.remove_highlight()
+
+func get_tile(grid_position):
+	return map_data.get_tile(grid_position)
+
+func get_entity(grid_position):
+	return map_data.get_blocking_entity_at_location(grid_position)
 
 #Save & Load
 func load_game(_player: Entity) -> bool:

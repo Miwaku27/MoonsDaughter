@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/EventHandlers/game_over_input_handler.gd" id="4_w1oh4"]
 [ext_resource type="Script" path="res://Scripts/EventHandlers/history_viewer_input_handler.gd" id="5_r1wn3"]
 [ext_resource type="Script" path="res://Scripts/EventHandlers/base_input_handler.gd" id="6_jw2ei"]
-[ext_resource type="Script" path="res://Scripts/EventHandlers/ability_input_manager.gd" id="7_otwma"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/targeting_input_manager.gd" id="7_otwma"]
 [ext_resource type="Script" path="res://Scripts/Map/map.gd" id="7_ud6ja"]
 [ext_resource type="Script" path="res://Scripts/Dungeon/dungeon_generator.gd" id="8_t11fx"]
 [ext_resource type="Script" path="res://Scripts/Map/field_of_view.gd" id="9_eap8u"]
@@ -48,9 +48,8 @@ script = ExtResource("1_7g3nc")
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("2_eosnj")
 
-[node name="MainGameInputHandler" type="Node" parent="InputHandler" node_paths=PackedStringArray("ability_input_manager")]
+[node name="MainGameInputHandler" type="Node" parent="InputHandler"]
 script = ExtResource("3_wnpas")
-ability_input_manager = NodePath("../AbilityInputManager")
 
 [node name="GameOverInputHandler" type="Node" parent="InputHandler"]
 script = ExtResource("4_w1oh4")
@@ -63,14 +62,13 @@ message_log_path = NodePath("../../InterfaceRoot/VBoxContainer/InfoBar/MessagesP
 [node name="DummyInputHandler" type="Node" parent="InputHandler"]
 script = ExtResource("6_jw2ei")
 
-[node name="AbilityInputManager" type="Node" parent="InputHandler" node_paths=PackedStringArray("map")]
+[node name="TargetingInputManager" type="Node" parent="InputHandler"]
+unique_name_in_owner = true
 script = ExtResource("7_otwma")
-map = NodePath("../../Map")
 
 [node name="InputTimer" type="Timer" parent="InputHandler"]
 wait_time = 0.15
 one_shot = true
-autostart = true
 
 [node name="Map" type="Node3D" parent="."]
 script = ExtResource("7_ud6ja")
@@ -96,7 +94,6 @@ script = ExtResource("12_07bg6")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 cull_mask = 1048573
-fov = 90.0
 script = ExtResource("13_u46r7")
 _sprite_layers = 1
 

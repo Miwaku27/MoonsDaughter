@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtcxpgtt0tbwy"]
+[gd_scene load_steps=4 format=3 uid="uid://dtcxpgtt0tbwy"]
 
 [ext_resource type="Script" path="res://Scripts/Entity/selectable_entity.gd" id="1_8l4pj"]
+[ext_resource type="Texture2D" uid="uid://dh7mbub5fcy48" path="res://Assets/Effects/target.png" id="3_ghtvc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_05bh2"]
 size = Vector3(1, 1, 0)
@@ -17,6 +18,15 @@ shape = SubResource("BoxShape3D_05bh2")
 [node name="Icon" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 layers = 2
+
+[node name="Target" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415999, 0.485054, 0)
+visible = false
+pixel_size = 0.002
+texture = ExtResource("3_ghtvc")
+
+[node name="Effects" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.810835, 0)
 
 [connection signal="input_event" from="." to="." method="click_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

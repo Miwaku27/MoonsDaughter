@@ -9,7 +9,7 @@ signal main_menu_requested
 @onready var map : Map = $Map
 @onready var input_timer = $InputHandler/InputTimer
 
-var player_can_act : bool = true
+var player_can_act : bool = false
 
 const level_up_menu_scene: PackedScene = preload("res://Scenes/GUI/level_up_menu.tscn")
 
