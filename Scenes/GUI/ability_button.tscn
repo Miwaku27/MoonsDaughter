@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://cohiru0okcsk8"]
+
+[ext_resource type="Texture2D" uid="uid://c0uuoqj3r4fef" path="res://icon.svg" id="1_shkp6"]
+[ext_resource type="Script" path="res://Scripts/GUI/ability_button.gd" id="2_yhpgy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yk1fo"]
+font_size = 12
+
+[node name="TextureButton" type="TextureButton"]
+custom_minimum_size = Vector2(40, 40)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("1_shkp6")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_yhpgy")
+
+[node name="KeyLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "00"
+label_settings = SubResource("LabelSettings_yk1fo")
+visible_characters = -2
+visible_ratio = -1.0
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "~~~"
+label_settings = SubResource("LabelSettings_yk1fo")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+visible_characters = -3
+visible_ratio = -1.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
