@@ -2,6 +2,7 @@ class_name AbilityDefinition extends Resource
 
 @export var id: String
 @export var name: String = "Unnamed Ability"
+@export var texture: Texture
 
 @export var max_range: int = 1
 @export var zone: int = 1

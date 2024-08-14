@@ -14,7 +14,7 @@ func _ready():
 	key_label.text = input.as_text_physical_keycode()
 	
 	if %AbilityInputManager and %AbilityInputManager.player_abilities[id]:
-		name_label.text = %AbilityInputManager.player_abilities[id].name
+		set_ability(%AbilityInputManager.player_abilities[id], id)
 	else:
 		name_label.text = "-"
 
@@ -23,8 +23,10 @@ func set_ability(_ability, slot):
 		ability = _ability
 		if ability:
 			name_label.text = ability.name
+			texture_normal = ability.texture
 		else:
 			name_label.text = "-"
+			texture_normal = null
 
 
 func _on_pressed():
