@@ -1,7 +1,8 @@
 TODO :
 Dungeon:
-	- Targeting System
-	- Shortcuts
+	- Abilties :
+		- Targeting System
+		- Clickable Shortcut Buttons
 	- Character Stats & Combat
 	- Allies
 		- UI
