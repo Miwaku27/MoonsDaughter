@@ -1,6 +1,6 @@
 extends Node
 
-const game_scene: PackedScene = preload("res://Scenes/Game/game.tscn")
+const dungeon_scene: PackedScene = preload("res://Scenes/Game/dungeon.tscn")
 const main_menu_scene: PackedScene = preload("res://Scenes/Game/main_menu.tscn")
 
 var current_child: Node
@@ -17,7 +17,7 @@ func load_main_menu() -> void:
 	main_menu.game_requested.connect(_on_game_requested)
 
 func _on_game_requested(try_load: bool) -> void:
-	var game: Game = switch_to_scene(game_scene)
+	var game: Game = switch_to_scene(dungeon_scene)
 	game.main_menu_requested.connect(load_main_menu)
 	game.init_game(try_load)
 
