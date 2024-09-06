@@ -82,8 +82,8 @@ func set_entity_type(key: String) -> void:
 	self.key = key
 	var entity_definition: EntityDefinition = Database.entities[key]
 	_definition = entity_definition
-	type = _definition.type
-	blocks_movement = _definition.is_blocking_movement
+	type = _definition.type()
+	blocks_movement = _definition.is_blocking_movement()
 	entity_name = _definition.name
 	texture = entity_definition.texture
 	mod_color = entity_definition.color

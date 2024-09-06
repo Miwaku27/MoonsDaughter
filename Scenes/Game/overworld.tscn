@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://1n58n1ljpcwf"]
+[gd_scene load_steps=4 format=3 uid="uid://1n58n1ljpcwf"]
 
+[ext_resource type="Script" path="res://Scripts/GUI/GUI.gd" id="1_dieln"]
 [ext_resource type="Texture2D" uid="uid://2bc5vveldq1u" path="res://Assets/Backgrounds/Space1.webp" id="1_yxwm1"]
+[ext_resource type="Texture2D" uid="uid://dh7mbub5fcy48" path="res://Assets/Effects/target.png" id="2_deml7"]
 
 [node name="Overworld" type="Control"]
 layout_mode = 3
@@ -18,5 +20,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_yxwm1")
-expand_mode = 4
-stretch_mode = 3
+stretch_mode = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_dieln")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 561.0
+offset_top = 61.0
+offset_right = 669.0
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Test"
+icon = ExtResource("2_deml7")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true

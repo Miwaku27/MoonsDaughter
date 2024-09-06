@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://c6rrhqm0n6d1n"]
 
-[ext_resource type="Texture2D" uid="uid://by5hwtsxbv21d" path="res://Assets/Images/menu_background.png" id="1_im7a6"]
 [ext_resource type="Script" path="res://Scripts/GUI/main_menu.gd" id="1_ljhis"]
 [ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="2_ncwa1"]
+[ext_resource type="Texture2D" uid="uid://by5hwtsxbv21d" path="res://Assets/Backgrounds/menu_background.png" id="2_qyt3w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ujphr"]
 font = ExtResource("2_ncwa1")
@@ -70,7 +70,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_im7a6")
+texture = ExtResource("2_qyt3w")
 stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

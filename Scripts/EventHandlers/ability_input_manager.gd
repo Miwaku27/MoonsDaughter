@@ -10,7 +10,6 @@ var current_tile = null
 var selected_tiles = []
 
 func _ready():
-	print("Input")
 	set_ability(Database.abilities["attack"], 0)
 	set_ability(Database.abilities["faraway"], 1)
 	set_ability(Database.abilities["aoe"], 2)

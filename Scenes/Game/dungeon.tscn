@@ -1,6 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://dad8ybukipwy2"]
+[gd_scene load_steps=30 format=3 uid="uid://dad8ybukipwy2"]
 
-[ext_resource type="Script" path="res://Scripts/game.gd" id="1_efn83"]
+[ext_resource type="Script" path="res://Scripts/dungeon.gd" id="1_wu7fu"]
 [ext_resource type="Script" path="res://Scripts/EventHandlers/input_handler.gd" id="2_507w6"]
 [ext_resource type="Script" path="res://Scripts/EventHandlers/main_game_input_handler.gd" id="3_j3byc"]
 [ext_resource type="Script" path="res://Scripts/EventHandlers/game_over_input_handler.gd" id="4_5kqgw"]
@@ -13,9 +13,10 @@
 [ext_resource type="Script" path="res://Scripts/GUI/mouseover_checker.gd" id="11_mokdu"]
 [ext_resource type="Script" path="res://Scripts/Entity/player.gd" id="12_8o14v"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="13_ctth8"]
-[ext_resource type="PackedScene" uid="uid://ei3rffm8h1p7" path="res://Scenes/mini_map.tscn" id="14_v5ggk"]
-[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/UIBox.tres" id="15_ht5hc"]
+[ext_resource type="PackedScene" uid="uid://ei3rffm8h1p7" path="res://Scenes/GUI/mini_map.tscn" id="14_v5ggk"]
+[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/Themes/UIBox.tres" id="15_ht5hc"]
 [ext_resource type="Script" path="res://Scripts/GUI/hp_display.gd" id="16_d62y8"]
+[ext_resource type="Texture2D" uid="uid://c1yu34ij2etor" path="res://Assets/Sprites/Margaret.png" id="16_ti70c"]
 [ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="17_a6f7b"]
 [ext_resource type="Script" path="res://Scripts/GUI/xp_display.gd" id="18_02vcj"]
 [ext_resource type="Script" path="res://Scenes/GUI/character_info_box.gd" id="19_1nrbg"]
@@ -44,7 +45,7 @@ bg_color = Color(0, 0, 1, 1)
 font = ExtResource("17_a6f7b")
 
 [node name="Dungeon" type="Node3D"]
-script = ExtResource("1_efn83")
+script = ExtResource("1_wu7fu")
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("2_507w6")
@@ -58,8 +59,8 @@ script = ExtResource("4_5kqgw")
 
 [node name="HistoryViewerInputHandler" type="Node" parent="InputHandler"]
 script = ExtResource("5_t46xi")
-messages_panel_path = NodePath("../../InterfaceRoot/VBoxContainer/InfoBar/MessagesPanel")
-message_log_path = NodePath("../../InterfaceRoot/VBoxContainer/InfoBar/MessagesPanel/MessageLog")
+messages_panel_path = NodePath("../../InterfaceRoot/VBoxContainer/BottomBox/MessagesPanel")
+message_log_path = NodePath("../../InterfaceRoot/VBoxContainer/BottomBox/MessagesPanel/MessageLog")
 
 [node name="DummyInputHandler" type="Node" parent="InputHandler"]
 script = ExtResource("6_kqgpg")
@@ -115,18 +116,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MiniMap" parent="InterfaceRoot" node_paths=PackedStringArray("player") instance=ExtResource("14_v5ggk")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -200.0
-offset_right = 0.0
-offset_bottom = 200.0
-grow_horizontal = 0
-grow_vertical = 1
-player = NodePath("../../Player")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="InterfaceRoot"]
 layout_mode = 1
 anchors_preset = 15
@@ -135,36 +124,86 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="InterfaceRoot/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="InterfaceRoot/VBoxContainer/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1152, 515)
-render_target_update_mode = 4
-
-[node name="InfoBar" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer"]
+[node name="TopBox" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="StatsPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/InfoBar"]
+[node name="ShortcutsPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/TopBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 4.0
+size_flags_stretch_ratio = 2.0
 theme_override_styles/panel = ExtResource("15_ht5hc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel"]
+[node name="Top" type="BoxContainer" parent="InterfaceRoot/VBoxContainer/TopBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="MiniMapPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/TopBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/panel = ExtResource("15_ht5hc")
+
+[node name="MiniMap" parent="InterfaceRoot/VBoxContainer/TopBox/MiniMapPanel" node_paths=PackedStringArray("player") instance=ExtResource("14_v5ggk")]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+player = NodePath("../../../../../Player")
+
+[node name="MiddleBox" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="LeftCharacter" type="BoxContainer" parent="InterfaceRoot/VBoxContainer/MiddleBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="InterfaceRoot/VBoxContainer/MiddleBox/LeftCharacter"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("16_ti70c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Middle" type="BoxContainer" parent="InterfaceRoot/VBoxContainer/MiddleBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="RightCharacter" type="BoxContainer" parent="InterfaceRoot/VBoxContainer/MiddleBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="InterfaceRoot/VBoxContainer/MiddleBox/RightCharacter"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("16_ti70c")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="BottomBox" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatsPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/BottomBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/panel = ExtResource("15_ht5hc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel"]
 layout_mode = 2
 
-[node name="HpDisplay" type="MarginContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer"]
+[node name="HpDisplay" type="MarginContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("16_d62y8")
 
-[node name="HpBar" type="ProgressBar" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/HpDisplay"]
+[node name="HpBar" type="ProgressBar" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/HpDisplay"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_wbuvy")
@@ -172,18 +211,18 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_cuih2")
 step = 1.0
 show_percentage = false
 
-[node name="HpLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/HpDisplay"]
+[node name="HpLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/HpDisplay"]
 unique_name_in_owner = true
 layout_mode = 2
 label_settings = SubResource("LabelSettings_xshaj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="XpDisplay" type="MarginContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer"]
+[node name="XpDisplay" type="MarginContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("18_02vcj")
 
-[node name="XpBar" type="ProgressBar" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/XpDisplay"]
+[node name="XpBar" type="ProgressBar" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/XpDisplay"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_46s16")
@@ -191,100 +230,105 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_426ln")
 step = 1.0
 show_percentage = false
 
-[node name="XpLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/XpDisplay"]
+[node name="XpLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/XpDisplay"]
 unique_name_in_owner = true
 layout_mode = 2
 label_settings = SubResource("LabelSettings_xshaj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CharacterInfoBox" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer"]
+[node name="CharacterInfoBox" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("19_1nrbg")
 
-[node name="LevelLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/CharacterInfoBox"]
+[node name="LevelLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/CharacterInfoBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 label_settings = SubResource("LabelSettings_h5aoa")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AttackLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/CharacterInfoBox"]
+[node name="AttackLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/CharacterInfoBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 label_settings = SubResource("LabelSettings_h5aoa")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DefenseLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/CharacterInfoBox"]
+[node name="DefenseLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/CharacterInfoBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 label_settings = SubResource("LabelSettings_h5aoa")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DungeonFloorLabel" type="Label" parent="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer"]
+[node name="DungeonFloorLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_h5aoa")
 script = ExtResource("20_dsyo2")
 
-[node name="Button0" parent="InterfaceRoot/VBoxContainer/InfoBar" instance=ExtResource("21_3ir13")]
+[node name="AbilitiesPanel" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer/BottomBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="Button0" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
 layout_mode = 2
 
-[node name="Button1" parent="InterfaceRoot/VBoxContainer/InfoBar" instance=ExtResource("21_3ir13")]
+[node name="Button1" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
 layout_mode = 2
 id = 1
 
-[node name="Button2" parent="InterfaceRoot/VBoxContainer/InfoBar" instance=ExtResource("21_3ir13")]
+[node name="Button2" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
 layout_mode = 2
 id = 2
 
-[node name="Button3" parent="InterfaceRoot/VBoxContainer/InfoBar" instance=ExtResource("21_3ir13")]
+[node name="Button3" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
 layout_mode = 2
 id = 3
 
-[node name="Button4" parent="InterfaceRoot/VBoxContainer/InfoBar" instance=ExtResource("21_3ir13")]
+[node name="Button4" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
 layout_mode = 2
 id = 4
 
-[node name="Button5" parent="InterfaceRoot/VBoxContainer/InfoBar" instance=ExtResource("21_3ir13")]
+[node name="Button5" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
 layout_mode = 2
 id = 5
 
-[node name="Button6" parent="InterfaceRoot/VBoxContainer/InfoBar" instance=ExtResource("21_3ir13")]
+[node name="Button6" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
 layout_mode = 2
 id = 6
 
-[node name="Button7" parent="InterfaceRoot/VBoxContainer/InfoBar" instance=ExtResource("21_3ir13")]
+[node name="Button7" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
 layout_mode = 2
 id = 7
 
-[node name="Button8" parent="InterfaceRoot/VBoxContainer/InfoBar" instance=ExtResource("21_3ir13")]
+[node name="Button8" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
 layout_mode = 2
 id = 8
 
-[node name="Button9" parent="InterfaceRoot/VBoxContainer/InfoBar" instance=ExtResource("21_3ir13")]
+[node name="Button9" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
 layout_mode = 2
 id = 9
 
-[node name="MessagesPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/InfoBar"]
+[node name="MessagesPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/BottomBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 4.0
+size_flags_stretch_ratio = 2.0
 theme_override_styles/panel = ExtResource("15_ht5hc")
 
-[node name="MessageLog" type="ScrollContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/MessagesPanel"]
+[node name="MessageLog" type="ScrollContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/MessagesPanel"]
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 script = ExtResource("22_f3515")
 
-[node name="MessageList" type="VBoxContainer" parent="InterfaceRoot/VBoxContainer/InfoBar/MessagesPanel/MessageLog"]
+[node name="MessageList" type="VBoxContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/MessagesPanel/MessageLog"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/HpDisplay" method="initialize"]
-[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/XpDisplay" method="initialize"]
-[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/InfoBar/StatsPanel/VBoxContainer/CharacterInfoBox" method="initialize"]
+[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/HpDisplay" method="initialize"]
+[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/XpDisplay" method="initialize"]
+[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/CharacterInfoBox" method="initialize"]
 [connection signal="timeout" from="InputHandler/InputTimer" to="." method="unlock_action"]

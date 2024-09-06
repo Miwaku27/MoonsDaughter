@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c6hql45lefi6q"]
 
-[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/UIBox.tres" id="1_be22p"]
+[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/Themes/UIBox.tres" id="1_be22p"]
 [ext_resource type="Script" path="res://Scripts/GUI/level_up_menu.gd" id="1_ehowj"]
 [ext_resource type="PackedScene" uid="uid://byvt715tim3fn" path="res://Scenes/GUI/inventory_menu_item.tscn" id="1_kmgmu"]
 [ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="2_jikiu"]

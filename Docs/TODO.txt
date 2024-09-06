@@ -1,7 +1,6 @@
 TODO :
 Dungeon:
 	- Abilties :
-		- Targeting System
 		- Clickable Shortcut Buttons
 	- Character Stats & Combat
 	- Allies
@@ -9,7 +8,14 @@ Dungeon:
 		- AI
 	
 	- Different vision range for enemies (for now enemy sees player when player sees them)
+	
+	- Redo Action button, with sub-menu (use, grab, ...)
+	- Redo Items as Abilities
 
 Outside:
 	- UI
-	- Dialogue
+
+Characters:
+	- Stats
+	- Skills
+	- Abilities

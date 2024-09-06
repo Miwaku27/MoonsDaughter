@@ -1,4 +1,4 @@
-class_name Game extends Node3D
+class_name Dungeon extends Node3D
 
 signal player_created(player)
 signal main_menu_requested

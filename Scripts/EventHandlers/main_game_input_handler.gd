@@ -18,7 +18,6 @@ const inventory_menu_scene = preload("res://Scenes/GUI/inventory_menu.tscn")
 
 func get_action(player : Entity) -> Action:
 	var action: Action = null
-	
 	if Input.is_action_pressed("up"):
 		var i = 0 + player.facing_direction * 2
 		action = BumpAction.new(player, directions[i%8])
