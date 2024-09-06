@@ -14,6 +14,6 @@ signal target_entity(entity)
 signal untarget
 
 signal message_sent(text, color)
-signal escape_requested
+signal game_menu_requested
 
 signal lock_action(length)

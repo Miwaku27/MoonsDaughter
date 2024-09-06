@@ -8,17 +8,19 @@ signal main_menu_requested
 @onready var input_handler: InputHandler = $InputHandler
 @onready var map : Map = $Map
 @onready var input_timer = $InputHandler/InputTimer
+#@onready var game_menu = $InterfaceRoot/GameMenu
 
 var player_can_act : bool = false
 
 const level_up_menu_scene: PackedScene = preload("res://Scenes/GUI/level_up_menu.tscn")
+const game_menu_scene: PackedScene = preload("res://Scenes/GUI/game_menu.tscn")
 
 const player_definition: EntityDefinition = preload("res://Resources/Entities/entity_definition_player.tres")
 const entity_definition: EntityDefinition = preload("res://Resources/Entities/entity_definition.tres")
 
 
 func init_game(load_data : bool) -> void:
-	SignalBus.escape_requested.connect(_on_escape_requested)
+	SignalBus.game_menu_requested.connect(_on_game_menu_requested)
 	SignalBus.lock_action.connect(_on_lock_action)
 	if load_data:
 		load_game()
@@ -64,6 +66,14 @@ func _handle_enemy_turns() -> void:
 		if entity.is_alive() and entity != player:
 			entity.ai_component.perform()
 
+func _on_game_menu_requested() -> void:
+	var game_menu = game_menu_scene.instantiate()
+	add_child(game_menu)
+	game_menu.setup(self)
+	set_physics_process(false)
+	await game_menu.game_menu_completed
+	set_physics_process.bind(true).call_deferred()
+
 func _on_escape_requested() -> void:
 	main_menu_requested.emit()
 
@@ -94,3 +104,7 @@ func load_game() -> void:
 		"Welcome back, adventurer!",
 		GameColors.WELCOME_TEXT
 	).call_deferred()
+
+func save_game() -> void:
+	get_map_data().save()
+	MessageLog.send_message("Game Saved", Color.WHITE)

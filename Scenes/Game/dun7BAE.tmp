@@ -1,0 +1,338 @@
+[gd_scene load_steps=31 format=3 uid="uid://dad8ybukipwy2"]
+
+[ext_resource type="Script" path="res://Scripts/dungeon.gd" id="1_wu7fu"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/input_handler.gd" id="2_507w6"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/main_game_input_handler.gd" id="3_j3byc"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/game_over_input_handler.gd" id="4_5kqgw"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/history_viewer_input_handler.gd" id="5_t46xi"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/base_input_handler.gd" id="6_kqgpg"]
+[ext_resource type="Script" path="res://Scripts/EventHandlers/ability_input_manager.gd" id="7_wp3lp"]
+[ext_resource type="Script" path="res://Scripts/Map/map.gd" id="8_loqk6"]
+[ext_resource type="Script" path="res://Scripts/Dungeon/dungeon_generator.gd" id="9_5g44c"]
+[ext_resource type="Script" path="res://Scripts/Map/field_of_view.gd" id="10_53kym"]
+[ext_resource type="Script" path="res://Scripts/GUI/mouseover_checker.gd" id="11_mokdu"]
+[ext_resource type="Script" path="res://Scripts/Entity/player.gd" id="12_8o14v"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="13_ctth8"]
+[ext_resource type="PackedScene" uid="uid://ei3rffm8h1p7" path="res://Scenes/GUI/mini_map.tscn" id="14_v5ggk"]
+[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/Themes/UIBox.tres" id="15_ht5hc"]
+[ext_resource type="Script" path="res://Scripts/GUI/hp_display.gd" id="16_d62y8"]
+[ext_resource type="Texture2D" uid="uid://c1yu34ij2etor" path="res://Assets/Sprites/Margaret.png" id="16_ti70c"]
+[ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="17_a6f7b"]
+[ext_resource type="Script" path="res://Scripts/GUI/xp_display.gd" id="18_02vcj"]
+[ext_resource type="Script" path="res://Scenes/GUI/character_info_box.gd" id="19_1nrbg"]
+[ext_resource type="Script" path="res://Scripts/GUI/dungeon_floor_label.gd" id="20_dsyo2"]
+[ext_resource type="PackedScene" uid="uid://cohiru0okcsk8" path="res://Scenes/GUI/ability_button.tscn" id="21_3ir13"]
+[ext_resource type="Script" path="res://Scripts/GUI/message_log.gd" id="22_f3515"]
+[ext_resource type="PackedScene" uid="uid://dx4vd4nooxicv" path="res://Scenes/GUI/game_menu.tscn" id="24_3sms3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbuvy"]
+bg_color = Color(0.498039, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuih2"]
+bg_color = Color(0, 0.498039, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xshaj"]
+font = ExtResource("17_a6f7b")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46s16"]
+bg_color = Color(0, 0, 0.498039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_426ln"]
+bg_color = Color(0, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h5aoa"]
+font = ExtResource("17_a6f7b")
+
+[node name="Dungeon" type="Node3D"]
+script = ExtResource("1_wu7fu")
+
+[node name="InputHandler" type="Node" parent="."]
+script = ExtResource("2_507w6")
+
+[node name="MainGameInputHandler" type="Node" parent="InputHandler" node_paths=PackedStringArray("ability_input_manager")]
+script = ExtResource("3_j3byc")
+ability_input_manager = NodePath("../AbilityInputManager")
+
+[node name="GameOverInputHandler" type="Node" parent="InputHandler"]
+script = ExtResource("4_5kqgw")
+
+[node name="HistoryViewerInputHandler" type="Node" parent="InputHandler"]
+script = ExtResource("5_t46xi")
+messages_panel_path = NodePath("../../InterfaceRoot/VBoxContainer/BottomBox/MessagesPanel")
+message_log_path = NodePath("../../InterfaceRoot/VBoxContainer/BottomBox/MessagesPanel/MessageLog")
+
+[node name="DummyInputHandler" type="Node" parent="InputHandler"]
+script = ExtResource("6_kqgpg")
+
+[node name="AbilityInputManager" type="Node" parent="InputHandler" node_paths=PackedStringArray("map")]
+unique_name_in_owner = true
+script = ExtResource("7_wp3lp")
+map = NodePath("../../Map")
+
+[node name="InputTimer" type="Timer" parent="InputHandler"]
+wait_time = 0.15
+one_shot = true
+autostart = true
+
+[node name="Map" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_loqk6")
+
+[node name="DungeonGenerator" type="Node" parent="Map"]
+script = ExtResource("9_5g44c")
+
+[node name="FieldOfView" type="Node" parent="Map"]
+script = ExtResource("10_53kym")
+
+[node name="Entities" type="Node3D" parent="Map"]
+
+[node name="Tiles" type="Node3D" parent="Map"]
+
+[node name="MouseoverChecker" type="Node3D" parent="Map"]
+script = ExtResource("11_mokdu")
+
+[node name="Player" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("12_8o14v")
+
+[node name="Camera" type="Camera3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+cull_mask = 1048573
+fov = 90.0
+script = ExtResource("13_ctth8")
+_sprite_layers = 1
+
+[node name="Icon" type="Sprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.1, 0)
+layers = 2
+
+[node name="InterfaceRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InterfaceRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBox" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ShortcutsPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/TopBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/panel = ExtResource("15_ht5hc")
+
+[node name="Top" type="BoxContainer" parent="InterfaceRoot/VBoxContainer/TopBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="MiniMapPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/TopBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/panel = ExtResource("15_ht5hc")
+
+[node name="MiniMap" parent="InterfaceRoot/VBoxContainer/TopBox/MiniMapPanel" node_paths=PackedStringArray("player") instance=ExtResource("14_v5ggk")]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+player = NodePath("../../../../../Player")
+
+[node name="MiddleBox" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="LeftCharacter" type="BoxContainer" parent="InterfaceRoot/VBoxContainer/MiddleBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="InterfaceRoot/VBoxContainer/MiddleBox/LeftCharacter"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("16_ti70c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Middle" type="BoxContainer" parent="InterfaceRoot/VBoxContainer/MiddleBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="RightCharacter" type="BoxContainer" parent="InterfaceRoot/VBoxContainer/MiddleBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="InterfaceRoot/VBoxContainer/MiddleBox/RightCharacter"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("16_ti70c")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="BottomBox" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatsPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/BottomBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/panel = ExtResource("15_ht5hc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel"]
+layout_mode = 2
+
+[node name="HpDisplay" type="MarginContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("16_d62y8")
+
+[node name="HpBar" type="ProgressBar" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/HpDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wbuvy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cuih2")
+step = 1.0
+show_percentage = false
+
+[node name="HpLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/HpDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_xshaj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XpDisplay" type="MarginContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("18_02vcj")
+
+[node name="XpBar" type="ProgressBar" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/XpDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_46s16")
+theme_override_styles/fill = SubResource("StyleBoxFlat_426ln")
+step = 1.0
+show_percentage = false
+
+[node name="XpLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/XpDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_xshaj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharacterInfoBox" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("19_1nrbg")
+
+[node name="LevelLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/CharacterInfoBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_h5aoa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/CharacterInfoBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_h5aoa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenseLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/CharacterInfoBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_h5aoa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DungeonFloorLabel" type="Label" parent="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_h5aoa")
+script = ExtResource("20_dsyo2")
+
+[node name="AbilitiesPanel" type="HBoxContainer" parent="InterfaceRoot/VBoxContainer/BottomBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="Button0" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
+layout_mode = 2
+
+[node name="Button1" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
+layout_mode = 2
+id = 1
+
+[node name="Button2" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
+layout_mode = 2
+id = 2
+
+[node name="Button3" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
+layout_mode = 2
+id = 3
+
+[node name="Button4" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
+layout_mode = 2
+id = 4
+
+[node name="Button5" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
+layout_mode = 2
+id = 5
+
+[node name="Button6" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
+layout_mode = 2
+id = 6
+
+[node name="Button7" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
+layout_mode = 2
+id = 7
+
+[node name="Button8" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
+layout_mode = 2
+id = 8
+
+[node name="Button9" parent="InterfaceRoot/VBoxContainer/BottomBox/AbilitiesPanel" instance=ExtResource("21_3ir13")]
+layout_mode = 2
+id = 9
+
+[node name="MessagesPanel" type="PanelContainer" parent="InterfaceRoot/VBoxContainer/BottomBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/panel = ExtResource("15_ht5hc")
+
+[node name="MessageLog" type="ScrollContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/MessagesPanel"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("22_f3515")
+
+[node name="MessageList" type="VBoxContainer" parent="InterfaceRoot/VBoxContainer/BottomBox/MessagesPanel/MessageLog"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameMenu" parent="InterfaceRoot" instance=ExtResource("24_3sms3")]
+layout_mode = 1
+
+[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/HpDisplay" method="initialize"]
+[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/XpDisplay" method="initialize"]
+[connection signal="player_created" from="." to="InterfaceRoot/VBoxContainer/BottomBox/StatsPanel/VBoxContainer/CharacterInfoBox" method="initialize"]
+[connection signal="timeout" from="InputHandler/InputTimer" to="." method="unlock_action"]
