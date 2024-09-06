@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8nfv27p5lhf5"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/settings_menu.gd" id="1_g053l"]
+[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/Themes/UIBox.tres" id="1_tvjt1"]
+[ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="2_yyk2e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b67cj"]
+font = ExtResource("2_yyk2e")
+font_size = 32
+font_color = Color(1, 1, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5wmqj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n0m8f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiq5t"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8601u"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g053l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_tvjt1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_b67cj")
+horizontal_alignment = 1
+
+[node name="Window" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Window"
+label_settings = SubResource("LabelSettings_b67cj")
+horizontal_alignment = 1
+
+[node name="WindowButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_yyk2e")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5wmqj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n0m8f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oiq5t")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8601u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_oiq5t")
+shortcut_feedback = false
+text = "[ 1 ] Save"
+
+[node name="ConfirmButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_yyk2e")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5wmqj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n0m8f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oiq5t")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8601u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_oiq5t")
+text = "[ 7 ] Cancel"
+
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer/WindowButton" to="." method="_on_window_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6rrhqm0n6d1n"]
+[gd_scene load_steps=10 format=3 uid="uid://c6rrhqm0n6d1n"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/main_menu.gd" id="1_ljhis"]
 [ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="2_ncwa1"]
@@ -23,30 +23,6 @@ border_width_right = 1
 border_width_bottom = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmn0w"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_x0odv"]
-device = -1
-keycode = 49
-unicode = 38
-
-[sub_resource type="Shortcut" id="Shortcut_g4x3e"]
-events = [SubResource("InputEventKey_x0odv")]
-
-[sub_resource type="InputEventKey" id="InputEventKey_q8qp0"]
-device = -1
-keycode = 50
-unicode = 233
-
-[sub_resource type="Shortcut" id="Shortcut_lih32"]
-events = [SubResource("InputEventKey_q8qp0")]
-
-[sub_resource type="InputEventKey" id="InputEventKey_2ctwa"]
-device = -1
-keycode = 53
-unicode = 40
-
-[sub_resource type="Shortcut" id="Shortcut_dqoa6"]
-events = [SubResource("InputEventKey_2ctwa")]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6n1ft"]
 font = ExtResource("2_ncwa1")
@@ -106,8 +82,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_drcnx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lb4yj")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_nmn0w")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lb4yj")
-shortcut = SubResource("Shortcut_g4x3e")
-shortcut_feedback = false
 text = "[ 1 ] Play a new game"
 
 [node name="LoadButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
@@ -122,8 +96,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_drcnx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lb4yj")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_nmn0w")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lb4yj")
-shortcut = SubResource("Shortcut_lih32")
-shortcut_feedback = false
 text = "[ 2 ] Continue last game"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
@@ -137,8 +109,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_drcnx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lb4yj")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_nmn0w")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lb4yj")
-shortcut = SubResource("Shortcut_dqoa6")
-shortcut_feedback = false
 text = "[ 5 ] Quit"
 
 [node name="Label" type="Label" parent="VBoxContainer"]

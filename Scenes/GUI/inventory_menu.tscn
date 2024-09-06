@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b61kyson5nc3y"]
 
-[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/Themes/UIBox.tres" id="1_1fjjb"]
 [ext_resource type="Script" path="res://Scripts/GUI/inventory_menu.gd" id="1_g7pc8"]
 [ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="2_0trwm"]
+[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/Themes/UIBox.tres" id="2_4kyru"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_62qin"]
 font = ExtResource("2_0trwm")
@@ -22,7 +22,7 @@ grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("1_1fjjb")
+theme_override_styles/panel = ExtResource("2_4kyru")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2

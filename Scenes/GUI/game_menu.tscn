@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dx4vd4nooxicv"]
+[gd_scene load_steps=9 format=3 uid="uid://dx4vd4nooxicv"]
 
 [ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/Themes/UIBox.tres" id="1_fnblh"]
 [ext_resource type="Script" path="res://Scripts/GUI/game_menu.gd" id="1_h2n0v"]
@@ -23,14 +23,6 @@ border_width_right = 1
 border_width_bottom = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ysfs"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_2ctwa"]
-device = -1
-keycode = 53
-unicode = 40
-
-[sub_resource type="Shortcut" id="Shortcut_si36b"]
-events = [SubResource("InputEventKey_2ctwa")]
 
 [node name="GameMenu" type="Control"]
 layout_mode = 3
@@ -63,7 +55,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Options"
+text = "Menu"
 label_settings = SubResource("LabelSettings_lb58m")
 horizontal_alignment = 1
 
@@ -78,9 +70,20 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_ooc0c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mpo3k")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ysfs")
 theme_override_styles/focus = SubResource("StyleBoxFlat_mpo3k")
-shortcut = SubResource("Shortcut_si36b")
-shortcut_feedback = false
 text = "[ 1 ] Save"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_kofwe")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gnicc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ooc0c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mpo3k")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ysfs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mpo3k")
+text = "[ 2 ] Settings"
 
 [node name="QuitMenuButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -93,8 +96,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_ooc0c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mpo3k")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ysfs")
 theme_override_styles/focus = SubResource("StyleBoxFlat_mpo3k")
-shortcut = SubResource("Shortcut_si36b")
-shortcut_feedback = false
 text = "[ 5 ] Quit to Menu"
 
 [node name="QuitGameButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
@@ -108,8 +109,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_ooc0c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mpo3k")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ysfs")
 theme_override_styles/focus = SubResource("StyleBoxFlat_mpo3k")
-shortcut = SubResource("Shortcut_si36b")
-shortcut_feedback = false
 text = "[ 6 ] Quit to Desktop"
 
 [node name="CancelButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
@@ -123,11 +122,10 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_ooc0c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mpo3k")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ysfs")
 theme_override_styles/focus = SubResource("StyleBoxFlat_mpo3k")
-shortcut = SubResource("Shortcut_si36b")
-shortcut_feedback = false
 text = "[ 7 ] Cancel"
 
 [connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer/QuitMenuButton" to="." method="_on_quit_menu_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
