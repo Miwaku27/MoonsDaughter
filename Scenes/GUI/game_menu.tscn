@@ -1,28 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx4vd4nooxicv"]
+[gd_scene load_steps=9 format=3 uid="uid://cqktat8qfo178"]
 
-[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/Themes/UIBox.tres" id="1_fnblh"]
-[ext_resource type="Script" path="res://Scripts/GUI/game_menu.gd" id="1_h2n0v"]
+[ext_resource type="Script" path="res://Scripts/GUI/game_menu.gd" id="1_0l8kq"]
 [ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="1_kofwe"]
+[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/Themes/UIBox.tres" id="1_qabnu"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_lb58m"]
+[sub_resource type="LabelSettings" id="LabelSettings_436pv"]
 font = ExtResource("1_kofwe")
 font_size = 32
 font_color = Color(1, 1, 0, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnicc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ooim8"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ooc0c"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7iai"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpo3k"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4d0p"]
 draw_center = false
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ysfs"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tmqsr"]
 
 [node name="GameMenu" type="Control"]
 layout_mode = 3
@@ -31,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_h2n0v")
+script = ExtResource("1_0l8kq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -48,7 +48,7 @@ size_flags_vertical = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CenterContainer"]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("1_fnblh")
+theme_override_styles/panel = ExtResource("1_qabnu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/PanelContainer"]
 layout_mode = 2
@@ -56,7 +56,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Menu"
-label_settings = SubResource("LabelSettings_lb58m")
+label_settings = SubResource("LabelSettings_436pv")
 horizontal_alignment = 1
 
 [node name="SaveButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
@@ -65,11 +65,12 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_kofwe")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxEmpty_gnicc")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ooc0c")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mpo3k")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ysfs")
-theme_override_styles/focus = SubResource("StyleBoxFlat_mpo3k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ooim8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o7iai")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a4d0p")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tmqsr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a4d0p")
+shortcut_feedback = false
 text = "[ 1 ] Save"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
@@ -78,11 +79,11 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_kofwe")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxEmpty_gnicc")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ooc0c")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mpo3k")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ysfs")
-theme_override_styles/focus = SubResource("StyleBoxFlat_mpo3k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ooim8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o7iai")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a4d0p")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tmqsr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a4d0p")
 text = "[ 2 ] Settings"
 
 [node name="QuitMenuButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
@@ -91,11 +92,11 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_kofwe")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxEmpty_gnicc")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ooc0c")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mpo3k")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ysfs")
-theme_override_styles/focus = SubResource("StyleBoxFlat_mpo3k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ooim8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o7iai")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a4d0p")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tmqsr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a4d0p")
 text = "[ 5 ] Quit to Menu"
 
 [node name="QuitGameButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
@@ -104,12 +105,12 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_kofwe")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxEmpty_gnicc")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ooc0c")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mpo3k")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ysfs")
-theme_override_styles/focus = SubResource("StyleBoxFlat_mpo3k")
-text = "[ 6 ] Quit to Desktop"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ooim8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o7iai")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a4d0p")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tmqsr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a4d0p")
+text = "[ 6 ] Quit Game"
 
 [node name="CancelButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -117,11 +118,11 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_kofwe")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxEmpty_gnicc")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ooc0c")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mpo3k")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ysfs")
-theme_override_styles/focus = SubResource("StyleBoxFlat_mpo3k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ooim8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o7iai")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a4d0p")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tmqsr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a4d0p")
 text = "[ 7 ] Cancel"
 
 [connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
