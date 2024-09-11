@@ -19,3 +19,6 @@ Characters:
 	- Stats
 	- Skills
 	- Abilities
+
+
+					TODO ASAP : Equip Items

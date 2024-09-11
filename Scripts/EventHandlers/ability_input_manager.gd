@@ -1,9 +1,10 @@
-extends BaseInputHandler
+class_name AbilityInputManager extends BaseInputHandler
 
 @export var map: Map
 
 var player_abilities: Array[AbilityDefinition] = [null, null, null, null, null, null, null, null, null, null]
 var current_ability: AbilityDefinition = null
+var current_item: ItemComponent = null
 @onready var player = %Player
 
 var current_tile = null
@@ -11,9 +12,10 @@ var selected_tiles = []
 
 func _ready():
 	set_ability(Database.abilities["attack"], 0)
-	set_ability(Database.abilities["faraway"], 1)
-	set_ability(Database.abilities["aoe"], 2)
+	set_ability(Database.abilities["faraway"], 2)
+	set_ability(Database.abilities["aoe"], 1)
 	SignalBus.target_entered.connect(target_entered)
+	SignalBus.use_item.connect(select_item)
 
 func target_entered(grid_position):
 	current_tile = map.get_tile(grid_position)
@@ -56,6 +58,7 @@ func get_action(_player : Entity) -> Action:
 	return null
 
 func select_ability(i: int) -> Action:
+	current_item = null
 	if player_abilities.size() > i:
 		var abi = player_abilities[i]
 		
@@ -66,8 +69,14 @@ func select_ability(i: int) -> Action:
 			current_ability = abi
 	return null
 
+func select_item(item: Entity) -> Action:
+	current_item = item.entity_component
+	current_ability = current_item.ability
+	return null
+
 func unselect_ability():
 	current_ability = null
+	current_item = null
 	if selected_tiles:
 		remove_highlight()
 
@@ -81,6 +90,10 @@ func start_ability() -> Action:
 		return null
 	
 	var action = AbilityAction.new(player, current_ability, selected_tiles, grid_position, map)
+	
+	if current_item and current_item.consumed:
+		current_item.remove_from(player)
+	
 	unselect_ability()
 	return action
 

@@ -17,3 +17,5 @@ signal message_sent(text, color)
 signal game_menu_requested
 
 signal lock_action(length)
+
+signal use_item(item)

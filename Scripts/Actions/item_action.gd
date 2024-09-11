@@ -16,8 +16,13 @@ func get_target_actor() -> Entity:
 	return get_map_data().get_actor_at_location(target_position)
 
 func perform() -> bool:
-	if item == null:
-		return false
-	if item.equippable_component:
-		return EquipAction.new(entity, item).perform()
-	return item.consumable_component.activate(self)
+	#if item == null:
+		#return false
+	#elif item.type == Entity.EntityType.ITEM:
+		#return %AbilityInputManager.select_item(item.entity_component)
+	#elif item.equippable_component:
+		#return EquipAction.new(entity, item).perform()
+	#elif item.consumable_component:
+		#return item.consumable_component.activate(self)
+	#else:
+	return false

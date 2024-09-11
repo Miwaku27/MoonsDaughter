@@ -16,6 +16,12 @@ func _ready():
 		if entity.id:
 			entities[entity.id] = entity
 
+	path = "res://Resources/Items2/"
+	for filePath in DirAccess.get_files_at(path):
+		var entity = load(path + filePath)
+		if entity.id:
+			entities[entity.id] = entity
+
 	path = "res://Resources/Abilities/"
 	for filePath in DirAccess.get_files_at(path):
 		var ability = load(path + filePath)

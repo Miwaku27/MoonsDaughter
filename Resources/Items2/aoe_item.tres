@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ConsumableDefinition" load_steps=6 format=3 uid="uid://bejq13pvutfq4"]
+
+[ext_resource type="Resource" uid="uid://dtpkgsuhqoypr" path="res://Resources/Abilities/aoe.tres" id="1_uh07c"]
+[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="2_hwbyf"]
+[ext_resource type="Script" path="res://Scripts/Items/consumable_definition.gd" id="2_kekc2"]
+[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="3_yak2n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwiyh"]
+atlas = ExtResource("3_yak2n")
+region = Rect2(592, 176, 16, 16)
+
+[resource]
+script = ExtResource("2_kekc2")
+ability = ExtResource("1_uh07c")
+id = "aoe_item"
+name = "AoE Item"
+texture = SubResource("AtlasTexture_wwiyh")
+color = Color(0.639216, 0, 0.0980392, 1)
+icon_texture = ExtResource("2_hwbyf")
+icon_color = Color(1, 1, 1, 1)
+ai_type = 0
+has_equipment = false
+inventory_capacity = 0

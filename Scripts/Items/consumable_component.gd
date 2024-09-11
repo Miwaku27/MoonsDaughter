@@ -1,8 +1,17 @@
-class_name ConsumableComponent extends Component
+class_name ConsumableComponent extends ItemComponent
 
+var ability: AbilityDefinition
+
+func _init(definition: ConsumableDefinition) -> void:
+	ability = definition.ability
 
 func get_action(consumer: Entity) -> Action:
-	return ItemAction.new(consumer, entity)
+	return ConsumeAction.new(consumer, entity)
+	#var action = ItemAction.new(consumer, entity)
+	#if ability:
+	#	return ability.perform(action)
+	#else:
+	#	return action
 
 
 func activate(_action: ItemAction) -> bool:

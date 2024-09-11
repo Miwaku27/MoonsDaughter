@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dad8ybukipwy2"]
+[gd_scene load_steps=29 format=3 uid="uid://dad8ybukipwy2"]
 
 [ext_resource type="Script" path="res://Scripts/dungeon.gd" id="1_wu7fu"]
 [ext_resource type="Script" path="res://Scripts/EventHandlers/input_handler.gd" id="2_507w6"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://ei3rffm8h1p7" path="res://Scenes/GUI/mini_map.tscn" id="14_v5ggk"]
 [ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/Themes/UIBox.tres" id="15_ht5hc"]
 [ext_resource type="Script" path="res://Scripts/GUI/hp_display.gd" id="16_d62y8"]
-[ext_resource type="Texture2D" uid="uid://c1yu34ij2etor" path="res://Assets/Sprites/Margaret.png" id="16_ti70c"]
 [ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="17_a6f7b"]
 [ext_resource type="Script" path="res://Scripts/GUI/xp_display.gd" id="18_02vcj"]
 [ext_resource type="Script" path="res://Scenes/GUI/character_info_box.gd" id="19_1nrbg"]
@@ -164,7 +163,6 @@ size_flags_stretch_ratio = 2.0
 [node name="TextureRect" type="TextureRect" parent="InterfaceRoot/VBoxContainer/MiddleBox/LeftCharacter"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("16_ti70c")
 expand_mode = 1
 stretch_mode = 5
 
@@ -181,7 +179,6 @@ size_flags_stretch_ratio = 2.0
 [node name="TextureRect" type="TextureRect" parent="InterfaceRoot/VBoxContainer/MiddleBox/RightCharacter"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("16_ti70c")
 expand_mode = 1
 stretch_mode = 5
 flip_h = true

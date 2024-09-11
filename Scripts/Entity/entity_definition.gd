@@ -26,3 +26,6 @@ func is_blocking_movement() -> bool:
 	return true
 func type() -> Entity.EntityType:
 	return Entity.EntityType.ACTOR
+
+func create_entity_component():
+	return null

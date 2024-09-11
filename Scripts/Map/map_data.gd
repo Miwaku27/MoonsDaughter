@@ -77,7 +77,14 @@ func get_actor_at_location(location: Vector2i) -> Entity:
 func get_items() -> Array[Entity]:
 	var items: Array[Entity] = []
 	for entity in entities:
-		if entity.consumable_component != null or entity.equippable_component != null:
+		if entity.type == Entity.EntityType.ITEM or entity.consumable_component != null or entity.equippable_component != null:
+			items.append(entity)
+	return items
+
+func get_items_at(grid_position: Vector2i) -> Array[Entity]:
+	var items: Array[Entity] = []
+	for entity in entities:
+		if entity.grid_position == grid_position and (entity.consumable_component != null or entity.equippable_component != null):
 			items.append(entity)
 	return items
 

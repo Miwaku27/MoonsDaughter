@@ -31,8 +31,11 @@ class_name DungeonDefinition extends Resource
 	7: {"troll": 60}
 }
 @export var item_chances = {
-	0: {"health_potion": 35},
-	2: {"confusion_scroll": 10},
-	4: {"lightning_scroll": 25, "sword": 5},
-	6: {"fireball_scroll": 25, "chainmail": 15},
+	0: {"aoe_item": 50},
 }
+#@export var item_chances = {
+#	0: {"health_potion": 35},
+#	2: {"confusion_scroll": 10},
+#	4: {"lightning_scroll": 25, "sword": 5},
+#	6: {"fireball_scroll": 25, "chainmail": 15},
+#}

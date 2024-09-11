@@ -18,6 +18,8 @@ const entity_types = {
 	"sword": "res://Resources/Items/sword_definition.tres",
 	"chainmail": "res://Resources/Items/chainmail_definition.tres",
 	"leather_armor": "res://Resources/Items/leather_armor_definition.tres",
+	
+	"aoe_item": "res://Resources/Items/aoe_item.tres",
 }
 
 var key: String
@@ -36,6 +38,8 @@ var equippable_component: EquippableComponent
 var inventory_component: InventoryComponent
 var level_component: LevelComponent
 var equipment_component: EquipmentComponent
+
+var entity_component: Component
 
 var tween : Tween
 var height_pos = 0.75
@@ -91,6 +95,12 @@ func set_entity_type(key: String) -> void:
 	if icon:
 		icon.texture = entity_definition.icon_texture
 		icon.modulate = entity_definition.icon_color
+	
+	entity_component = entity_definition.create_entity_component()
+	if entity_component:
+		add_child(entity_component)
+		entity_component.entity = self
+		return
 	
 	match entity_definition.ai_type:
 		AIType.HOSTILE:
@@ -165,6 +175,15 @@ func highlight(_selection_color):
 
 func remove_highlight():
 	pass
+
+func use_item(item: Entity):
+	var comp = item.entity_component
+	if comp is ConsumableComponent:
+		#%AbilityInputManager.select_item(item)
+		SignalBus.use_item.emit(item)
+		return null
+	else:
+		return EquipAction.new(self, item)
 
 #Save & Load
 func get_save_data() -> Dictionary:

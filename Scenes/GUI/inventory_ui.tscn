@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt0kdfgi575rn"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/inventory_ui.gd" id="1_n4c33"]
+[ext_resource type="StyleBox" uid="uid://cqou70cinmhsl" path="res://Assets/Themes/UIBox.tres" id="2_bgtme"]
+[ext_resource type="FontFile" uid="uid://btsolyw7botxy" path="res://Assets/Fonts/Kenney Pixel.ttf" id="3_xlsf6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o0bed"]
+font = ExtResource("3_xlsf6")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0g2tk"]
+color = Color(1, 1, 1, 1)
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("1_n4c33")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_bgtme")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_o0bed")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_0g2tk")
+
+[node name="InventoryList" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
