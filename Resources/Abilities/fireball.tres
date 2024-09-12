@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" load_steps=6 format=3 uid="uid://nd2of07mhfnp"]
+
+[ext_resource type="Script" path="res://Scripts/Abilities/ability_damage_component.gd" id="1_0blsk"]
+[ext_resource type="Script" path="res://Scripts/Abilities/ability_definition.gd" id="2_lm1mh"]
+[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="3_fqutq"]
+
+[sub_resource type="Resource" id="Resource_vvsf3"]
+script = ExtResource("1_0blsk")
+damage_mod = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdkm6"]
+atlas = ExtResource("3_fqutq")
+region = Rect2(448, 176, 16, 16)
+
+[resource]
+script = ExtResource("2_lm1mh")
+id = "fireball"
+name = "Fireball"
+texture = SubResource("AtlasTexture_gdkm6")
+max_range = 5
+zone = 3
+require_target = false
+components = Array[Resource("res://Scripts/Abilities/ability_component.gd")]([SubResource("Resource_vvsf3")])

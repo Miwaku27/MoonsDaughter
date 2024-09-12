@@ -34,6 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "00"
 label_settings = SubResource("LabelSettings_yk1fo")
+horizontal_alignment = 1
 visible_characters = -2
 visible_ratio = -1.0
 

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EquipableDefinition" load_steps=5 format=3 uid="uid://wpmro46d005f"]
+
+[ext_resource type="Script" path="res://Scripts/Items2/equipable_definition.gd" id="1_cklsv"]
+[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="1_o7t1c"]
+[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="3_a6nky"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmfb4"]
+atlas = ExtResource("3_a6nky")
+region = Rect2(544, 96, 16, 16)
+
+[resource]
+script = ExtResource("1_cklsv")
+equipment_type = 0
+power_bonus = 4
+defense_bonus = 0
+id = "sword"
+name = "Sword"
+texture = SubResource("AtlasTexture_jmfb4")
+color = Color(0.498039, 0.498039, 0.498039, 1)
+icon_texture = ExtResource("1_o7t1c")
+icon_color = Color(0.498039, 0.498039, 0.498039, 1)
+ai_type = 0
+has_equipment = false
+inventory_capacity = 0

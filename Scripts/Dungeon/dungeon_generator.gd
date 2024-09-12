@@ -4,10 +4,10 @@ extends Node
 const entity_types = {
 	"orc": preload("res://Resources/Entities/entity_definition_orc.tres"),
 	"troll": preload("res://Resources/Entities/entity_definition_troll.tres"),
-	"health_potion": preload("res://Resources/Items/health_potion_definition.tres"),
-	"lightning_scroll": preload("res://Resources/Items/lightning_scroll_definition.tres"),
-	"confusion_scroll": preload("res://Resources/Items/confusion_scroll_definition.tres"),
-	"fireball_scroll": preload("res://Resources/Items/fireball_scroll_definition.tres"),
+	#"health_potion": preload("res://Resources/Items/health_potion_definition.tres"),
+	#"lightning_scroll": preload("res://Resources/Items/lightning_scroll_definition.tres"),
+	#"confusion_scroll": preload("res://Resources/Items/confusion_scroll_definition.tres"),
+	#"fireball_scroll": preload("res://Resources/Items/fireball_scroll_definition.tres"),
 }
 const available_dungeons = {
 	"test": preload("res://Resources/Dungeons/test_dungeon.tres"),

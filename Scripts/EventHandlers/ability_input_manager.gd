@@ -12,8 +12,11 @@ var selected_tiles = []
 
 func _ready():
 	set_ability(Database.abilities["attack"], 0)
+	set_ability(Database.abilities["fireball"], 1)
 	set_ability(Database.abilities["faraway"], 2)
-	set_ability(Database.abilities["aoe"], 1)
+	set_ability(Database.abilities["heal"], 3)
+	set_ability(Database.abilities["lightning_bolt"], 4)
+	set_ability(Database.abilities["confusion"], 5)
 	SignalBus.target_entered.connect(target_entered)
 	SignalBus.use_item.connect(select_item)
 

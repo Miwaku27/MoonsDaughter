@@ -19,7 +19,7 @@ const entity_types = {
 	"chainmail": "res://Resources/Items/chainmail_definition.tres",
 	"leather_armor": "res://Resources/Items/leather_armor_definition.tres",
 	
-	"aoe_item": "res://Resources/Items/aoe_item.tres",
+	#"aoe_item": "res://Resources/Items/aoe_item.tres",
 }
 
 var key: String
@@ -115,8 +115,8 @@ func set_entity_type(key: String) -> void:
 	if item_definition:
 		if item_definition is ConsumableComponentDefinition:
 			_handle_consumable(item_definition)
-		else:
-			equippable_component = EquippableComponent.new(item_definition)
+		#else:
+			#equippable_component = EquippableComponent.new(item_definition)
 		
 	if entity_definition.inventory_capacity > 0:
 		inventory_component = InventoryComponent.new(entity_definition.inventory_capacity)
@@ -136,8 +136,8 @@ func _handle_consumable(consumable_definition: ConsumableComponentDefinition) ->
 		consumable_component = HealingConsumableComponent.new(consumable_definition)
 	elif consumable_definition is LightningDamageConsumableComponentDefinition:
 		consumable_component = LightningDamageConsumableComponent.new(consumable_definition)
-	elif consumable_definition is ConfusionConsumableComponentDefinition:
-		consumable_component = ConfusionConsumableComponent.new(consumable_definition)
+	#elif consumable_definition is ConfusionConsumableComponentDefinition:
+	#	consumable_component = ConfusionConsumableComponent.new(consumable_definition)
 	elif consumable_definition is FireballDamageConsumableComponentDefinition:
 		consumable_component = FireballDamageConsumableComponent.new(consumable_definition)
 	

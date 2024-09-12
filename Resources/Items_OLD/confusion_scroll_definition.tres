@@ -1,26 +1,26 @@
 [gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://xby7wyx1v40f"]
 
-[ext_resource type="Script" path="res://Scripts/Items/confusion_consumable_component_definition.gd" id="1_5pqid"]
-[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="1_26e7p"]
-[ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="1_vdpvr"]
-[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="2_omp6d"]
+[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="1_wyimu"]
+[ext_resource type="Script" path="res://Scripts/Items/confusion_consumable_component_definition.gd" id="2_l4bq1"]
+[ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="3_3r0vm"]
+[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="4_46uwk"]
 
 [sub_resource type="Resource" id="Resource_ansg2"]
-script = ExtResource("1_5pqid")
+script = ExtResource("2_l4bq1")
 number_of_turns = 10
 id = ""
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iiivm"]
-atlas = ExtResource("2_omp6d")
+atlas = ExtResource("4_46uwk")
 region = Rect2(576, 176, 16, 16)
 
 [resource]
-script = ExtResource("1_vdpvr")
+script = ExtResource("3_3r0vm")
 id = "confusion_scroll"
 name = "Confusion Scroll"
 texture = SubResource("AtlasTexture_iiivm")
 color = Color(0.811765, 0.247059, 1, 1)
-icon_texture = ExtResource("1_26e7p")
+icon_texture = ExtResource("1_wyimu")
 icon_color = Color(0.811765, 0.247059, 1, 1)
 ai_type = 0
 has_equipment = false

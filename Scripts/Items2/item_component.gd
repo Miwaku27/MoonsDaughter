@@ -1,6 +1,6 @@
 class_name ItemComponent extends Component
 
-var consumed: bool = true
+var consumed: bool = false
 
 func get_action(_consumer: Entity) -> Action:
 	return null

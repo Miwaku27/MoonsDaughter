@@ -4,6 +4,7 @@ var ability: AbilityDefinition
 
 func _init(definition: ConsumableDefinition) -> void:
 	ability = definition.ability
+	consumed = definition.consumed
 
 func get_action(consumer: Entity) -> Action:
 	return ConsumeAction.new(consumer, entity)

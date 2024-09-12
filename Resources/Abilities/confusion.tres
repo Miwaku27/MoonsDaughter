@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" load_steps=6 format=3 uid="uid://bvdq21ooejd25"]
+
+[ext_resource type="Script" path="res://Scripts/Abilities/ability_confusion_component.gd" id="1_hf0ho"]
+[ext_resource type="Script" path="res://Scripts/Abilities/ability_definition.gd" id="2_nqvwy"]
+[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="3_c06c5"]
+
+[sub_resource type="Resource" id="Resource_vb8ih"]
+script = ExtResource("1_hf0ho")
+number_of_turns = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ye8h"]
+atlas = ExtResource("3_c06c5")
+region = Rect2(576, 176, 16, 16)
+
+[resource]
+script = ExtResource("2_nqvwy")
+id = "confusion"
+name = "Confusion"
+texture = SubResource("AtlasTexture_6ye8h")
+max_range = 2
+zone = 1
+require_target = true
+components = Array[Resource("res://Scripts/Abilities/ability_component.gd")]([SubResource("Resource_vb8ih")])

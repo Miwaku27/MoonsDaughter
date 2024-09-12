@@ -17,6 +17,7 @@ func perform() -> bool:
 	targets = []
 	var targeting = AbilityTargetingComponent.new(ability.zone)
 	targeting.perform(self)
+	print(targets)
 	
 	for component in ability.components:
 		component.perform(self)

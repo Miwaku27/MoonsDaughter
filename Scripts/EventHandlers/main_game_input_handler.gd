@@ -57,11 +57,6 @@ func get_action(player : Entity) -> Action:
 		#action = ItemAction.new(player, selected_item)
 		if selected_item and selected_item.entity_component:
 			return selected_item.entity_component.get_action(player)
-			#get_parent().get_parent()._on_lock_action(.15)
-			#return player.use_item(selected_item)
-			#%AbilityInputManager.select_item(selected_item)
-			#return null
-			#return selected_item.entity_component.activate(action)
 		
 	
 	if Input.is_action_just_pressed("view_history"):

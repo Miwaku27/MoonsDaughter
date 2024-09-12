@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://c2xmk2f657nv6"]
+
+[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="1_bvaid"]
+[ext_resource type="Script" path="res://Scripts/Items/lightning_damage_consumable_component_definition.gd" id="2_x8g1k"]
+[ext_resource type="Script" path="res://Scripts/Entity/entity_definition.gd" id="3_hycwl"]
+[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="4_qv2dp"]
+
+[sub_resource type="Resource" id="Resource_myife"]
+script = ExtResource("2_x8g1k")
+damage = 20
+maximum_range = 5
+id = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gvdd"]
+atlas = ExtResource("4_qv2dp")
+region = Rect2(704, 48, 16, 16)
+
+[resource]
+script = ExtResource("3_hycwl")
+id = "lightning_scroll"
+name = "Lightning Scroll"
+texture = SubResource("AtlasTexture_7gvdd")
+color = Color(1, 1, 0, 1)
+icon_texture = ExtResource("1_bvaid")
+icon_color = Color(1, 1, 0, 1)
+ai_type = 0
+has_equipment = false
+item_definition = SubResource("Resource_myife")
+inventory_capacity = 0

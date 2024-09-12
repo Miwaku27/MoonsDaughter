@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ConsumableDefinition" load_steps=6 format=3 uid="uid://bnqtf6b4mtfo7"]
+
+[ext_resource type="Resource" uid="uid://dnpc7gt5nbvgw" path="res://Resources/Abilities/confusion.tres" id="1_wwcee"]
+[ext_resource type="Texture2D" uid="uid://dqgyfvfe062xg" path="res://Assets/MiniMap/item.png" id="2_uvb3k"]
+[ext_resource type="Script" path="res://Scripts/Items2/consumable_definition.gd" id="3_5df1d"]
+[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="4_hobar"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxk8w"]
+atlas = ExtResource("4_hobar")
+region = Rect2(576, 176, 16, 16)
+
+[resource]
+script = ExtResource("3_5df1d")
+ability = ExtResource("1_wwcee")
+id = "confusion_scroll"
+name = "Confusion Scroll"
+texture = SubResource("AtlasTexture_nxk8w")
+color = Color(0.811765, 0.247059, 1, 1)
+icon_texture = ExtResource("2_uvb3k")
+icon_color = Color(0.811765, 0.247059, 1, 1)
+ai_type = 0
+has_equipment = false
+inventory_capacity = 0

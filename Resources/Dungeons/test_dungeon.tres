@@ -28,6 +28,17 @@ enemy_chances = {
 }
 item_chances = {
 0: {
-"aoe_item": 50
+"health_potion": 35
+},
+2: {
+"confusion_scroll": 10
+},
+4: {
+"lightning_scroll": 25,
+"sword": 5
+},
+6: {
+"chainmail": 15,
+"fireball_scroll": 25
 }
 }

@@ -21,4 +21,6 @@ Characters:
 	- Abilities
 
 
-					TODO ASAP : Equip Items
+Important :
+	- Highlight selected ability
+	- Self Targeting

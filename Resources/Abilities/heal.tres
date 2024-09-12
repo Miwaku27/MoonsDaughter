@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" load_steps=6 format=3 uid="uid://d048il2j3nau4"]
+
+[ext_resource type="Script" path="res://Scripts/Abilities/ability_heal_component.gd" id="1_bmajt"]
+[ext_resource type="Script" path="res://Scripts/Abilities/ability_definition.gd" id="2_rd6oj"]
+[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="3_0ywgf"]
+
+[sub_resource type="Resource" id="Resource_v3u68"]
+script = ExtResource("1_bmajt")
+heal_mod = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxxkj"]
+atlas = ExtResource("3_0ywgf")
+region = Rect2(656, 176, 16, 16)
+
+[resource]
+script = ExtResource("2_rd6oj")
+id = "heal"
+name = "Heal"
+texture = SubResource("AtlasTexture_gxxkj")
+max_range = 0
+zone = 1
+require_target = true
+components = Array[Resource("res://Scripts/Abilities/ability_component.gd")]([SubResource("Resource_v3u68")])

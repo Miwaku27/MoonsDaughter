@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" load_steps=6 format=3 uid="uid://clq5opsslqm1e"]
+
+[ext_resource type="Script" path="res://Scripts/Abilities/ability_damage_component.gd" id="1_dww4l"]
+[ext_resource type="Script" path="res://Scripts/Abilities/ability_definition.gd" id="2_mugha"]
+[ext_resource type="Texture2D" uid="uid://blxuiegr2hl11" path="res://Assets/monochrome_packed.png" id="3_wx6nt"]
+
+[sub_resource type="Resource" id="Resource_a3tin"]
+script = ExtResource("1_dww4l")
+damage_mod = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pfys"]
+atlas = ExtResource("3_wx6nt")
+region = Rect2(704, 48, 16, 16)
+
+[resource]
+script = ExtResource("2_mugha")
+id = "lightning_bolt"
+name = "Lightning Bolt"
+texture = SubResource("AtlasTexture_6pfys")
+max_range = 5
+zone = 1
+require_target = false
+components = Array[Resource("res://Scripts/Abilities/ability_component.gd")]([SubResource("Resource_a3tin")])
